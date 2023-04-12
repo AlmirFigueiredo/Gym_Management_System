@@ -7,8 +7,8 @@ public abstract class Person {
     private String address;
     private String phoneNumber;
 
-
-
+    public Person(){}
+    
     public String getId() {
         return id;
     }
