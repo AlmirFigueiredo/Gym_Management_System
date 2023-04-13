@@ -1,5 +1,5 @@
 package com.josealmir.gymmanagementsystem.service;
 
-public class MemberServiceImpl {
+public class MemberServiceImpl implements MemberService {
     
 }
