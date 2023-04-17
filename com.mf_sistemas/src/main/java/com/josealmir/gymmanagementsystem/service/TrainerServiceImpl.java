@@ -13,9 +13,13 @@ public class TrainerServiceImpl implements TrainerService{
     }
 
     @Override
-    public Trainer findTrainerById(String memberId) {
-        
-       
+    public Trainer findTrainerById(String trainerId) {
+        for(Trainer trainer : this.trainers) {
+            if(trainer.getId().equals(trainerId)) {
+                return trainer;
+            }
+        }
+        return null;
     }
 
     @Override

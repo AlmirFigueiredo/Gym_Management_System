@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 public interface TrainerService {
     void createTrainer(Trainer trainer);
-    Trainer findTrainerById(String memberId);
+    Trainer findTrainerById(String trainerId);
     LinkedList<Trainer> getAllTrainer();
     boolean updateTrainer(String trainerId, Trainer updateTrainer);
-    boolean deleteTrainer(String memberId);
+    boolean deleteTrainer(String trainerId);
 }
