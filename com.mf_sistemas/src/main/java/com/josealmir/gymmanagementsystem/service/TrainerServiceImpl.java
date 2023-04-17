@@ -26,8 +26,13 @@ public class TrainerServiceImpl implements TrainerService{
 
     @Override
     public boolean updateTrainer(String trainerId, Trainer updateTrainer) {
-        
-       
+        for(int i = 0; i < this.trainers.size(); i++) {
+            if(this.trainers.get(i).getId().equals(trainerId)) {
+                this.trainers.set(i, updateTrainer);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
