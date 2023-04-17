@@ -14,14 +14,14 @@ public class TrainerServiceImpl implements TrainerService{
 
     @Override
     public Trainer findTrainerById(String memberId) {
-
+        
        
     }
 
     @Override
     public LinkedList<Trainer> getAllTrainer() {
-        
-        
+        LinkedList<Trainer> copy = new LinkedList<Trainer>(trainers);
+        return copy;
     }
 
     @Override
