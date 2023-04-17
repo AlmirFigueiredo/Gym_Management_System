@@ -49,4 +49,15 @@ public class MemberServiceImpl implements MemberService {
         }
         return false;
     }
+
+    @Override
+    public boolean deleteMember(String memberId) {
+        for(int i = 0; i < this.members.size(); i++) {
+            if(this.members.get(i).getId().equals(memberId)) {
+                this.members.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

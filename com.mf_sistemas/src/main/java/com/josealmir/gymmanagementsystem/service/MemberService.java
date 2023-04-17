@@ -11,5 +11,5 @@ public interface MemberService {
     LinkedList<Member> getAllMembers();
     boolean updateMember(String memberId, Member updatedMember);
     boolean updateWorkoutPlan(String memberId, WorkoutPlan updatePlan);
-    void deleteMember(String memberId);
+    boolean deleteMember(String memberId);
 }
