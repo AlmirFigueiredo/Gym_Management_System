@@ -40,9 +40,14 @@ public class TrainerServiceImpl implements TrainerService{
     }
 
     @Override
-    public boolean deleteTrainer(String memberId) {
-        
-        
+    public boolean deleteTrainer(String trainerId) {
+        for(int i = 0; i < this.trainers.size(); i++) {
+            if(this.trainers.get(i).getId().equals(trainerId)) {
+                this.trainers.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
     
     
