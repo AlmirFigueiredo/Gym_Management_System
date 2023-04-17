@@ -39,5 +39,14 @@ public class MemberServiceImpl implements MemberService {
         }
         return false;
     }
-
+    @Override
+    public boolean updateWorkoutPlan(String memberId, WorkoutPlan updatePlan) {
+        for(Member member : this.members) {
+            if(member.getId().equals(memberId)) {
+                member.setWorkoutPlan(updatePlan);
+                return true;
+            }
+        }
+        return false;
+    }
 }
