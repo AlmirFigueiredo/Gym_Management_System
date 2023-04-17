@@ -3,7 +3,6 @@ package com.josealmir.gymmanagementsystem.model.workoutplan;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
-import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
 public class WorkoutPlan {
@@ -45,7 +44,4 @@ public class WorkoutPlan {
     public void setDailyWorkouts(LinkedList<DailyWorkout> dailyWorkouts) {
         this.dailyWorkouts = dailyWorkouts;
     }
-
-    
-
 }

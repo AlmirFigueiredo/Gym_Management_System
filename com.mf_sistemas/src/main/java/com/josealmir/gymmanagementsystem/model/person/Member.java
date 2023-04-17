@@ -2,10 +2,13 @@ package com.josealmir.gymmanagementsystem.model.person;
 
 import java.util.Date;
 
+import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+
 public class Member extends Person {
-    private Integer 
+
     private String memberId;
     private String memberShipType;
+    private WorkoutPlan workoutPlan;
     private Date startDate;
     private Date endDate;
 
