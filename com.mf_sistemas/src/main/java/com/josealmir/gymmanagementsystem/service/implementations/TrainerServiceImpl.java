@@ -1,8 +1,9 @@
-package com.josealmir.gymmanagementsystem.service;
+package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.LinkedList;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
+import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
 public class TrainerServiceImpl implements TrainerService{
     private LinkedList<Trainer> trainers = new LinkedList<Trainer>();

@@ -1,9 +1,10 @@
-package com.josealmir.gymmanagementsystem.service;
+package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.LinkedList;
 
 import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
 public class MemberServiceImpl implements MemberService {
     private LinkedList<Member> members = new LinkedList<Member>();
 

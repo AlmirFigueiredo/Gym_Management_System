@@ -1,4 +1,4 @@
-package com.josealmir.gymmanagementsystem.service;
+package com.josealmir.gymmanagementsystem.service.interfaces;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 import java.util.LinkedList;
