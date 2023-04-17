@@ -10,6 +10,6 @@ public interface MemberService {
     Member findMemberById(String memberId);
     LinkedList<Member> getAllMembers();
     boolean updateMember(String memberId, Member updatedMember);
-    void updateWorkoutPlan(String memberId, WorkoutPlan updatePlan);
+    boolean updateWorkoutPlan(String memberId, WorkoutPlan updatePlan);
     void deleteMember(String memberId);
 }

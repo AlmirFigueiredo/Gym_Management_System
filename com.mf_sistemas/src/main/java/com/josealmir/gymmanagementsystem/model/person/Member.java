@@ -3,6 +3,7 @@ package com.josealmir.gymmanagementsystem.model.person;
 import java.util.Date;
 
 public class Member extends Person {
+    private Integer 
     private String memberId;
     private String memberShipType;
     private Date startDate;
