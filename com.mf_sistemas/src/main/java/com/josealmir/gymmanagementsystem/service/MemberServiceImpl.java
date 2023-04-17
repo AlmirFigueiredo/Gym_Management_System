@@ -30,14 +30,14 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member updateMember(String memberId, Member updatedMember) {
+    public boolean updateMember(String memberId, Member updatedMember) {
         for(int i = 0; i < this.members.size(); i++) {
             if(this.members.get(i).getId().equals(memberId)) {
                 this.members.set(i, updatedMember);
-                return updatedMember;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     
