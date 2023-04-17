@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
-import com.josealmir.gymmanagementsystem.service.MemberService;
 public class MemberServiceImpl implements MemberService {
     private LinkedList<Member> members = new LinkedList<Member>();
 
