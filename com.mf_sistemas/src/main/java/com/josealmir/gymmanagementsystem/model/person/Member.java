@@ -30,6 +30,13 @@ public class Member extends Person {
         this.memberShipType = memberShipType;
     }
 
+    public WorkoutPlan getWorkoutPlan() {
+        return workoutPlan;
+    }
+    public void setWorkoutPlan(WorkoutPlan workoutPlan) {
+        this.workoutPlan = workoutPlan;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
