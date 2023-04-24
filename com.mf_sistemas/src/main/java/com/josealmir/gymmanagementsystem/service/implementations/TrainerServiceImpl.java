@@ -2,9 +2,12 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.LinkedList;
 
+import org.springframework.stereotype.Service;
+
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
+@Service
 public class TrainerServiceImpl implements TrainerService{
     private LinkedList<Trainer> trainers = new LinkedList<Trainer>();
 

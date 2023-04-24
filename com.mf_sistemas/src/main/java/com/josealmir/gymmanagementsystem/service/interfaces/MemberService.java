@@ -1,7 +1,6 @@
 package com.josealmir.gymmanagementsystem.service.interfaces;
 
 import java.util.LinkedList;
-
 import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 
