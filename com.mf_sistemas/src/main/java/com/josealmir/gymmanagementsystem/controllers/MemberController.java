@@ -40,5 +40,5 @@ public class MemberController {
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {
         return new ResponseEntity<Optional<Member>>(memberService.memberById(memberId), HttpStatus.OK);
     }
-
+    
 }

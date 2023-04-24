@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
 public interface TrainerRepository extends MongoRepository<Trainer, ObjectId>{
-    
+
 }
