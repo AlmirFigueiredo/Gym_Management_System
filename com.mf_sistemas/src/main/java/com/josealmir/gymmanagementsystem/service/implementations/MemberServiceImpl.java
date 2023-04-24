@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.person.Member;
@@ -26,5 +27,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Optional<Member> memberById(String memberId) {
         return memberRepository.findMemberById(memberId);
+    }
+    @Override
+    public void deleteMemberById(String memberId) {
+        memberRepository.deleteById(new ObjectId(memberId));
     }
 }
