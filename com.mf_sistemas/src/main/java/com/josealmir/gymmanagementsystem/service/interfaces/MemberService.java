@@ -8,4 +8,5 @@ import com.josealmir.gymmanagementsystem.model.person.Member;
 public interface MemberService {
     Member createMember(String memberId, String membershipType, Date startDate, Date endDate);
     List<Member> allMembers();
+    Member memberById();
 }
