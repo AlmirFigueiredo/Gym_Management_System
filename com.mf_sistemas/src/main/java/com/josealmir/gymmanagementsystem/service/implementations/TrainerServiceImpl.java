@@ -1,58 +1,26 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
-import java.util.LinkedList;
-
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
+import com.josealmir.gymmanagementsystem.repositories.TrainerRepository;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
 @Service
 public class TrainerServiceImpl implements TrainerService{
-    private LinkedList<Trainer> trainers = new LinkedList<Trainer>();
+    @Autowired
+    private TrainerRepository trainerRepository;
 
     @Override
-    public void createTrainer(Trainer trainer) {
-        trainers.add(trainer);
+    public Trainer createTrainer(String trainerId, String speciality, Double salary, String certificationNumber) {
+        Trainer trainer = trainerRepository.insert(new Trainer(trainerId, speciality, salary, certificationNumber));
+        return trainer;
     }
 
     @Override
-    public Trainer findTrainerById(String trainerId) {
-        for(Trainer trainer : this.trainers) {
-            if(trainer.getId().equals(trainerId)) {
-                return trainer;
-            }
-        }
-        return null;
+    public List<Trainer> allTrainers() {
+   
     }
-
-    @Override
-    public LinkedList<Trainer> getAllTrainer() {
-        LinkedList<Trainer> copy = new LinkedList<Trainer>(trainers);
-        return copy;
-    }
-
-    @Override
-    public boolean updateTrainer(String trainerId, Trainer updateTrainer) {
-        for(int i = 0; i < this.trainers.size(); i++) {
-            if(this.trainers.get(i).getId().equals(trainerId)) {
-                this.trainers.set(i, updateTrainer);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteTrainer(String trainerId) {
-        for(int i = 0; i < this.trainers.size(); i++) {
-            if(this.trainers.get(i).getId().equals(trainerId)) {
-                this.trainers.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
 }
