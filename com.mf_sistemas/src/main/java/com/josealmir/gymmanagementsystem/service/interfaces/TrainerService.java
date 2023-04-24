@@ -1,12 +1,9 @@
 package com.josealmir.gymmanagementsystem.service.interfaces;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
-import java.util.LinkedList;
+import java.util.List;
 
 public interface TrainerService {
-    void createTrainer(Trainer trainer);
-    Trainer findTrainerById(String trainerId);
-    LinkedList<Trainer> getAllTrainer();
-    boolean updateTrainer(String trainerId, Trainer updateTrainer);
-    boolean deleteTrainer(String trainerId);
+    Trainer createTrainer(String trainerId, String speciality, Double salary, String certificationNumber);
+    List<Trainer> allTrainers();
 }
