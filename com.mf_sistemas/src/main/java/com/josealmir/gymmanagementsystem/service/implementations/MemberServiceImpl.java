@@ -2,6 +2,7 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findAll();
     }
     @Override
-    public Member memberById() {
-        
+    public Optional<Member> memberById(String memberId) {
+        return memberRepository.findMemberById(memberId);
     }
 }
