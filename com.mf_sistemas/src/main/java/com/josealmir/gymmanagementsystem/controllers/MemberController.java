@@ -12,6 +12,4 @@ public class MemberController {
     @Autowired
     private Member member;
     
-    @GetMapping
-    public 
 }

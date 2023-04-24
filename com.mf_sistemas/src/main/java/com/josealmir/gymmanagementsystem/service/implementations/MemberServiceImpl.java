@@ -10,7 +10,7 @@ import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService {
     private LinkedList<Member> members = new LinkedList<Member>();
-
+    
     @Override
     public void createMember(Member member) {
         members.add(member);
