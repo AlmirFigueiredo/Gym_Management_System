@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,9 @@ public class MemberServiceImpl implements MemberService {
     public Member createMember(String memberId, String membershipType, Date startDate, Date endDate) {
         Member member = memberRepository.insert(new Member(memberId, membershipType, startDate, endDate));
         return member;
+    }
+    @Override
+    public List<Member> allMembers() {
+        return memberRepository.findAll();
     }
 }
