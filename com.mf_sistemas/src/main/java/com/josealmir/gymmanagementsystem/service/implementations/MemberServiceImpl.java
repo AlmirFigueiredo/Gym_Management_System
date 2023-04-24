@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public LinkedList<Member> getAllMembers() {
+    public LinkedList<Member> allMembers() {
         LinkedList<Member> copy = new LinkedList<Member>(members);
         return copy;
     }
