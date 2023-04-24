@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
+import com.josealmir.gymmanagementsystem.requests.TrainerRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
 @RestController
@@ -25,5 +26,11 @@ public class TrainerController {
         return new ResponseEntity<List<Trainer>>(trainerService.allTrainers(), HttpStatus.OK);
     }
     @PostMapping
-    public Trainer createTrainer(@RequestBody)
+    public Trainer createTrainer(@RequestBody TrainerRequest trainerRequest) {
+        String trainerId = trainerRequest.getTrainerId();
+        String speciality = trainerRequest.getSpeciality();
+        Double salary = trainerRequest.getSalary();
+        String certificationNumber = trainerRequest.getCertificationNumber();
+        return trainerService.createTrainer(trainerId, speciality, salary, certificationNumber);
+    }
 }
