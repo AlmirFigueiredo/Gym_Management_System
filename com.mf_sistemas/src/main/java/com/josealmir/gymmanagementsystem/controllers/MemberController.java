@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josealmir.gymmanagementsystem.model.person.Member;
-import com.josealmir.gymmanagementsystem.requests.MemberRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
 
 @RestController
@@ -17,12 +16,5 @@ public class MemberController {
     @Autowired
     private MemberService memberService;    
     
-    @PostMapping
-    public Member createMember(@RequestBody MemberRequest memberRequest) {
-        String memberId = memberRequest.getMemberId();
-        String membershipType = memberRequest.getMembershipType();
-        Date startDate = memberRequest.getStartDate();
-        Date endDate = memberRequest.getEndDate();
-        return memberService.createMember(memberId, membershipType, startDate, endDate);
-    }
+    
 }
