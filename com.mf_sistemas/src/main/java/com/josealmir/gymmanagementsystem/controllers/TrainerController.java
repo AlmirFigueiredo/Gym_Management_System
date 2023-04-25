@@ -42,7 +42,7 @@ public class TrainerController {
     }
     @DeleteMapping("/delete/{trainerId}")
     public ResponseEntity<Void> deleteTrainer(@PathVariable String trainerId) {
-        trainerService.deleteTrainerById(trainerId);
+        trainerService.deleteByTrainerId(trainerId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     

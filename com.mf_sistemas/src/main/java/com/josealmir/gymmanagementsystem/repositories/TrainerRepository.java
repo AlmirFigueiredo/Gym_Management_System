@@ -10,5 +10,5 @@ import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
 @Repository
 public interface TrainerRepository extends MongoRepository<Trainer, ObjectId>{
-    Optional<Trainer> findTrainerById(String trainerId);
+    Optional<Trainer> findByTrainerId(String trainerId);
 }

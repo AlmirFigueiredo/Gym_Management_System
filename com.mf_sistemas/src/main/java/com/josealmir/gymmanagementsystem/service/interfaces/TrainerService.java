@@ -8,5 +8,5 @@ public interface TrainerService {
     Trainer createTrainer(String trainerId, String speciality, Double salary, String certificationNumber);
     List<Trainer> allTrainers();
     Optional<Trainer> trainerById(String trainerId);
-    void deleteTrainerById(String trainerId);
+    void deleteByTrainerId(String trainerId);
 }

@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,11 +28,15 @@ public class TrainerServiceImpl implements TrainerService{
 
     @Override
     public Optional<Trainer> trainerById(String trainerId) {
-        return trainerRepository.findTrainerById(trainerId);
+        return trainerRepository.findByTrainerId(trainerId);
     }
     @Override
-    public void deleteTrainerById(String trainerId) {
-        Optional<Trainer> trainer =  trainerRepository.findTrainerById(trainerId);
-        trainer.ifPresent(trainerRepository::delete);
+    public void deleteByTrainerId(String trainerId) {
+        Optional<Trainer> trainer = trainerRepository.findByTrainerId(trainerId);
+        if(trainer.isPresent()) {
+            trainerRepository.delete(trainer.get());
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }
