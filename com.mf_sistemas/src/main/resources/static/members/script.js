@@ -22,6 +22,10 @@ function displayMembers(members) {
         memberIdCell.textContent = member.memberId;
         row.appendChild(memberIdCell);
 
+        const memberFullName = document.createElement('td');
+        memberFullName.textContent = member.fullName;
+        row.appendChild(memberFullName);
+
         const memberShipTypeCell = document.createElement('td');
         memberShipTypeCell.textContent = member.memberShipType;
         row.appendChild(memberShipTypeCell);
