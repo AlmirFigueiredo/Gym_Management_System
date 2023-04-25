@@ -12,3 +12,16 @@ function fetchMembers() {
             console.error('Error fetching members:', error);
         });
 }
+function displayMembers(members) {
+    const memberTableBody = document.querySelector('#memberTable tbody');
+    memberTableBody.innerHTML = '';
+    members.forEach(member => {
+        const row = document.createElement('tr');
+
+        const memberIdCell = document.createElement('td');
+        memberIdCell.textContent = member.memberId;
+        row.appendChild(memberIdCell);
+
+        memberTableBody.appendChild(row);
+    });
+}
