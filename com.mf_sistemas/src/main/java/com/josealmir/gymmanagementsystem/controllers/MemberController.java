@@ -41,4 +41,5 @@ public class MemberController {
         return new ResponseEntity<Optional<Member>>(memberService.memberById(memberId), HttpStatus.OK);
     }
     
+    
 }
