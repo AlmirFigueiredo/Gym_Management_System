@@ -3,3 +3,13 @@ body {
     margin: 0px;
     padding: 0px;
 }
+h1 {
+    text-align: center;
+    margin-top: 32px;
+}
+
+table {
+    width:40%;
+    margin: 32px auto;
+    border-collapse: collapse;
+}
