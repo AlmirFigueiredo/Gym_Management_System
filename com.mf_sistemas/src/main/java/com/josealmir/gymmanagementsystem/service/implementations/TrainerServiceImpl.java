@@ -3,6 +3,7 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,9 @@ public class TrainerServiceImpl implements TrainerService{
     @Override
     public Optional<Trainer> trainerById(String trainerId) {
         return trainerRepository.findTrainerById(trainerId);
+    }
+    @Override
+    public void deleteTrainerById(String trainerId) {
+        trainerRepository.deleteById(new ObjectId(trainerId));
     }
 }
