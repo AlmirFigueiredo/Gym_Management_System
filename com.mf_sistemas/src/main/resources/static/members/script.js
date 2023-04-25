@@ -26,6 +26,10 @@ function displayMembers(members) {
         memberShipTypeCell.textContent = member.memberShipType;
         row.appendChild(memberShipTypeCell);
 
+        const startDate = document.createElement('td');
+        startDate.textContent = member.startDate;
+        row.appendChild(startDate);
+
         memberTableBody.appendChild(row);
     });
 }
