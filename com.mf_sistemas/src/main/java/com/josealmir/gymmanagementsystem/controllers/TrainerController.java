@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,11 @@ public class TrainerController {
     @GetMapping("/{trainerId}")
     public ResponseEntity<Optional<Trainer>> getTrainerById(@PathVariable String trainerId) {
         return new ResponseEntity<Optional<Trainer>>(trainerService.trainerById(trainerId), HttpStatus.OK);
+    }
+    @DeleteMapping("/delete/{trainerId}")
+    public ResponseEntity<Void> deleteTrainer(@PathVariable String trainerId) {
+        trainerService.deleteTrainerById(trainerId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
 }
