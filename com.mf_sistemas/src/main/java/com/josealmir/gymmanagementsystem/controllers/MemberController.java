@@ -46,5 +46,4 @@ public class MemberController {
         memberService.deleteMemberById(memberId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
 }

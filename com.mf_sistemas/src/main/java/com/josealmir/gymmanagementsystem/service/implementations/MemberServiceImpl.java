@@ -30,6 +30,7 @@ public class MemberServiceImpl implements MemberService {
     }
     @Override
     public void deleteMemberById(String memberId) {
-        memberRepository.deleteById(new ObjectId(memberId));
+        Optional<Member> member = memberRepository.findMemberById(memberId);
+        member.ifPresent(memberRepository::delete);
     }
 }
