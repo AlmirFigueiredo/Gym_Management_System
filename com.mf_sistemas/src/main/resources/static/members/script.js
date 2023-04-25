@@ -30,6 +30,10 @@ function displayMembers(members) {
         startDate.textContent = member.startDate;
         row.appendChild(startDate);
 
+        const endDate = document.createElement('td');
+        endDate.textContent = member.endDate;
+        row.appendChild(endDate);
+        
         memberTableBody.appendChild(row);
     });
 }
