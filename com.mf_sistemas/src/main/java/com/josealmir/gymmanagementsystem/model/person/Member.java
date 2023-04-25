@@ -23,8 +23,4 @@ public class Member extends Person {
     private Date endDate;
     @DocumentReference
     private WorkoutPlan workoutPlan;    
-    
-    public Member(String memberId, String membershipType, Date startData, Date endData) {
-        super(memberId, membershipType, membershipType, memberId, membershipType);
-    }
 }

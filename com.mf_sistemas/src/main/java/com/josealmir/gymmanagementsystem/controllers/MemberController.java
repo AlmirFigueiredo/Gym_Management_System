@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josealmir.gymmanagementsystem.model.person.Member;
+import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.requests.MemberRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
 
@@ -35,7 +36,8 @@ public class MemberController {
         String membershipType = memberRequest.getMembershipType();
         Date startDate = memberRequest.getStartDate();
         Date endDate = memberRequest.getEndDate();
-        return memberService.createMember(memberId, membershipType, startDate, endDate);
+        WorkoutPlan workoutPlan = memberRequest.getWorkoutPlan();
+        return memberService.createMember(memberId, membershipType, startDate, endDate, workoutPlan);
     }
     @GetMapping("/{memberId}")
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {
