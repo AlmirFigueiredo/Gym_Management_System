@@ -29,6 +29,26 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findByMemberId(memberId);
     }
     @Override
+    public Member updateByMemberId(String memberId, Member updatedMember) {
+        Optional<Member> member = memberRepository.findByMemberId(memberId);
+        if(!member.isPresent()) {
+            throw new NoSuchElementException();
+        }
+        Member currentMember = member.get();
+        currentMember.setMemberId(updatedMember.getId());
+        currentMember.setAddress(updatedMember.getAddress());
+        currentMember.setEmail(updatedMember.getEmail());
+        currentMember.setFullName(updatedMember.getFullName());
+        currentMember.setMemberShipType(updatedMember.getMemberShipType());
+        currentMember.setPhoneNumber(updatedMember.getPhoneNumber());
+        currentMember.setStartDate(updatedMember.getStartDate());
+        currentMember.setEndDate(updatedMember.getEndDate());
+        currentMember.setId(updatedMember.getId());
+        currentMember.setWorkoutPlan(updatedMember.getWorkoutPlan());
+        return memberRepository.save(currentMember);
+    }
+
+    @Override
     public void deleteByMemberId(String memberId) {
         Optional<Member> member = memberRepository.findByMemberId(memberId);
         if(member.isPresent()) {
