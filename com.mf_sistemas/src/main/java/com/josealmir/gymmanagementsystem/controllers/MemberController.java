@@ -41,7 +41,7 @@ public class MemberController {
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {
         return new ResponseEntity<Optional<Member>>(memberService.memberById(memberId), HttpStatus.OK);
     }
-    @DeleteMapping
+    @DeleteMapping("/delete/{memberId}")
     public ResponseEntity<Void> deleteMember(@PathVariable String memberId) {
         memberService.deleteMemberById(memberId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
