@@ -1,6 +1,6 @@
 package com.josealmir.gymmanagementsystem.service.interfaces;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,5 +11,5 @@ public interface MemberService {
     Member createMember(String memberId, String membershipType, Date startDate, Date endDate, WorkoutPlan workoutPlan);
     List<Member> allMembers();
     Optional<Member> memberById(String memberId);
-    void deleteMemberById(String memberId);
+    void deleteByMemberId(String memberId);
 }

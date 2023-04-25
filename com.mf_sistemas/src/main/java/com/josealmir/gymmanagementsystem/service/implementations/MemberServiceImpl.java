@@ -1,7 +1,8 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,15 @@ public class MemberServiceImpl implements MemberService {
     }
     @Override
     public Optional<Member> memberById(String memberId) {
-        return memberRepository.findMemberById(memberId);
+        return memberRepository.findByMemberId(memberId);
     }
     @Override
-    public void deleteMemberById(String memberId) {
-        Optional<Member> member = memberRepository.findMemberById(memberId);
-        member.ifPresent(memberRepository::delete);
+    public void deleteByMemberId(String memberId) {
+        Optional<Member> member = memberRepository.findByMemberId(memberId);
+        if(member.isPresent()) {
+            memberRepository.delete(member.get());
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }

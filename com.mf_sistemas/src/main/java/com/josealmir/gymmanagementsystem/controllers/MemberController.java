@@ -1,6 +1,6 @@
 package com.josealmir.gymmanagementsystem.controllers;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +33,11 @@ public class MemberController {
     @PostMapping
     public Member createMember(@RequestBody MemberRequest memberRequest) {
         String memberId = memberRequest.getMemberId();
-        String membershipType = memberRequest.getMembershipType();
+        String memberShipType = memberRequest.getMemberShipType();
         Date startDate = memberRequest.getStartDate();
         Date endDate = memberRequest.getEndDate();
         WorkoutPlan workoutPlan = memberRequest.getWorkoutPlan();
-        return memberService.createMember(memberId, membershipType, startDate, endDate, workoutPlan);
+        return memberService.createMember(memberId, memberShipType, startDate, endDate, workoutPlan);
     }
     @GetMapping("/{memberId}")
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {
@@ -45,7 +45,7 @@ public class MemberController {
     }
     @DeleteMapping("/delete/{memberId}")
     public ResponseEntity<Void> deleteMember(@PathVariable String memberId) {
-        memberService.deleteMemberById(memberId);
+        memberService.deleteByMemberId(memberId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
