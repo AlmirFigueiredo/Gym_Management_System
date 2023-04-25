@@ -1,7 +1,7 @@
 package com.josealmir.gymmanagementsystem.model.workoutplan;
 
 import java.time.LocalDate;
-import java.util.LinkedList;
+import java.util.List;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
@@ -9,7 +9,7 @@ public class WorkoutPlan {
     private Trainer trainer;
     private LocalDate starDate;
     private LocalDate endDate;
-    private LinkedList<DailyWorkout> dailyWorkouts;
+    private List<DailyWorkout> dailyWorkouts;
 
     public WorkoutPlan() {}
 
@@ -37,11 +37,11 @@ public class WorkoutPlan {
         this.endDate = endDate;
     }
 
-    public LinkedList<DailyWorkout> getDailyWorkouts() {
+    public List<DailyWorkout> getDailyWorkouts() {
         return dailyWorkouts;
     }
 
-    public void setDailyWorkouts(LinkedList<DailyWorkout> dailyWorkouts) {
+    public void setDailyWorkouts(List<DailyWorkout> dailyWorkouts) {
         this.dailyWorkouts = dailyWorkouts;
     }
 }
