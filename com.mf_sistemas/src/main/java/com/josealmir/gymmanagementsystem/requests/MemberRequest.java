@@ -13,4 +13,8 @@ public class MemberRequest {
     private Date startDate;
     private Date endDate;
     private WorkoutPlan workoutPlan;
+    private String fullName;
+    private String email;
+    private String address;
+    private String phoneNumber;
 }

@@ -9,7 +9,8 @@ import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 
 public interface MemberService {
-    Member createMember(String memberId, String membershipType, Date startDate, Date endDate, WorkoutPlan workoutPlan);
+    Member createMember(String fullName, String email, String address, String phoneNumber, String memberId,
+    String memberShipType, Date startDate, Date endDate, WorkoutPlan workoutPlan);
     List<Member> allMembers();
     Optional<Member> memberById(String memberId);
     Member updateByMemberId(String memberId, Member updatedMember) throws NoSuchElementException;

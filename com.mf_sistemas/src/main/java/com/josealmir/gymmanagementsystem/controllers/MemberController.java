@@ -32,12 +32,16 @@ public class MemberController {
     }
     @PostMapping
     public Member createMember(@RequestBody MemberRequest memberRequest) {
+        String fullName = memberRequest.getFullName();
+        String email = memberRequest.getEmail();
+        String address = memberRequest.getAddress();
+        String phoneNumber = memberRequest.getPhoneNumber();        
         String memberId = memberRequest.getMemberId();
         String memberShipType = memberRequest.getMemberShipType();
         Date startDate = memberRequest.getStartDate();
         Date endDate = memberRequest.getEndDate();
         WorkoutPlan workoutPlan = memberRequest.getWorkoutPlan();
-        return memberService.createMember(memberId, memberShipType, startDate, endDate, workoutPlan);
+        return memberService.createMember(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan);
     }
     @GetMapping("/{memberId}")
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {

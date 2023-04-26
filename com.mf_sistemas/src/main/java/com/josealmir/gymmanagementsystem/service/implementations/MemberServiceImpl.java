@@ -16,8 +16,10 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberRepository memberRepository;
     @Override
-    public Member createMember(String memberId, String membershipType, Date startDate, Date endDate, WorkoutPlan workoutPlan) {
-        Member member = memberRepository.insert(new Member(memberId, membershipType, startDate, endDate, workoutPlan));
+    public Member createMember(String fullName, String email, String address, String phoneNumber, String memberId,
+    String memberShipType, Date startDate, Date endDate, WorkoutPlan workoutPlan) {
+
+        Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
         return member;
     }
     @Override

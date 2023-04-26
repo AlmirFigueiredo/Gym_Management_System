@@ -22,5 +22,16 @@ public class Member extends Person {
     private Date startDate;
     private Date endDate;
     @DocumentReference
-    private WorkoutPlan workoutPlan;    
+    private WorkoutPlan workoutPlan;
+    
+    public Member(String fullName, String email, String address, String phoneNumber, String memberId,
+            String memberShipType, Date startDate, Date endDate, WorkoutPlan workoutPlan) {
+        super(fullName, email, address, phoneNumber);
+        this.memberId = memberId;
+        this.memberShipType = memberShipType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.workoutPlan = workoutPlan;
+    }    
+    
 }
