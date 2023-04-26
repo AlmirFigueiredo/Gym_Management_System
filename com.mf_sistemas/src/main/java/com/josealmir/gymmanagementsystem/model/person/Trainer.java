@@ -28,5 +28,12 @@ public class Trainer extends Person {
         this.salary = salary;
         this.certificationNumber = certificationNumber;
     }
+    public Trainer(String speciality, Double salary, String certificationNumber, String fullName, 
+    String phoneNumber, String address, String email) {
+        super(fullName, email, address, phoneNumber);
+        this.certificationNumber = certificationNumber;
+        this.salary = salary;
+        this.speciality = speciality;
+    }
     
 }

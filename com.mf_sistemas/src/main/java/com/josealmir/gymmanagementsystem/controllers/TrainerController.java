@@ -30,7 +30,6 @@ public class TrainerController {
     }
     @PostMapping
     public Trainer createTrainer(@RequestBody TrainerRequest trainerRequest) {
-        String trainerId = trainerRequest.getTrainerId();
         String speciality = trainerRequest.getSpeciality();
         Double salary = trainerRequest.getSalary();
         String certificationNumber = trainerRequest.getCertificationNumber();
@@ -38,7 +37,7 @@ public class TrainerController {
         String phoneNumber = trainerRequest.getPhoneNumber();
         String address = trainerRequest.getAddress();
         String email = trainerRequest.getEmail();
-        return trainerService.createTrainer(trainerId, speciality, salary, certificationNumber, fullName, 
+        return trainerService.createTrainer(speciality, salary, certificationNumber, fullName, 
         phoneNumber, address, email);
     }
     @GetMapping("/{trainerId}")

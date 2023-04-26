@@ -16,8 +16,10 @@ public class TrainerServiceImpl implements TrainerService{
     private TrainerRepository trainerRepository;
 
     @Override
-    public Trainer createTrainer(String trainerId, String speciality, Double salary, String certificationNumber, String fullName, 
+    public Trainer createTrainer(String speciality, Double salary, String certificationNumber, String fullName, 
     String phoneNumber, String address, String email) {
+        int numberOfTrainers = allTrainers().size();
+        String trainerId = String.format("%03d", numberOfTrainers+1);
         Trainer trainer = trainerRepository.insert(new Trainer(trainerId, speciality, salary, certificationNumber, fullName, 
         phoneNumber, address, email));
         return trainer;
