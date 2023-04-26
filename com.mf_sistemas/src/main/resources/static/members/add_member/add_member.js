@@ -1,3 +1,23 @@
+async function createNewMember(memberInfo) {
+    try {
+        const response = await fetch('/Members', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(memberInfo),
+        });
+        if(response.ok) {
+            alert('New member created succesfully');
+        } else {
+            alert('Failed to create new member');
+        }
+    } catch (error) {
+        console.error('Error creating new member:', error);
+    }
+}
+
+
 function submitForm(event) {
     event.preventDefault();
 
@@ -18,6 +38,6 @@ function submitForm(event) {
         address: address,
         phoneNumber: phoneNumber
     }
-
-    
+    createNewMember(newMember);
 }
+
