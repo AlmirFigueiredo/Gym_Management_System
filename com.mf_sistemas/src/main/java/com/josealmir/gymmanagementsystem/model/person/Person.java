@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public abstract class Person {
-    private String id;
     private String fullName;
     private String email;
     private String address;

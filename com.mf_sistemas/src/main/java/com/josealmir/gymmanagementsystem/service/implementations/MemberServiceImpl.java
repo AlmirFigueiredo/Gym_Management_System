@@ -35,7 +35,6 @@ public class MemberServiceImpl implements MemberService {
             throw new NoSuchElementException();
         }
         Member currentMember = member.get();
-        currentMember.setMemberId(updatedMember.getId());
         currentMember.setAddress(updatedMember.getAddress());
         currentMember.setEmail(updatedMember.getEmail());
         currentMember.setFullName(updatedMember.getFullName());
@@ -43,7 +42,6 @@ public class MemberServiceImpl implements MemberService {
         currentMember.setPhoneNumber(updatedMember.getPhoneNumber());
         currentMember.setStartDate(updatedMember.getStartDate());
         currentMember.setEndDate(updatedMember.getEndDate());
-        currentMember.setId(updatedMember.getId());
         currentMember.setWorkoutPlan(updatedMember.getWorkoutPlan());
         return memberRepository.save(currentMember);
     }
