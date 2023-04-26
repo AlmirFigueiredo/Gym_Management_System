@@ -31,6 +31,14 @@ public class Member extends Person {
         this.startDate = startString;
         this.endDate = endString;
         this.workoutPlan = workoutPlan;
+    }
+    public Member(String fullName, String email, String address, String phoneNumber, String memberId,
+        String memberShipType, String startString, String endString) {
+    super(fullName, email, address, phoneNumber);
+    this.memberId = memberId;
+    this.memberShipType = memberShipType;
+    this.startDate = startString;
+    this.endDate = endString;
+    this.workoutPlan = null;
     }    
-    
 }

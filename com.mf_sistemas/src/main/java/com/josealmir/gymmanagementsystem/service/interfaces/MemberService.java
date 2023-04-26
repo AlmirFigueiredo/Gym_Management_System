@@ -8,7 +8,7 @@ import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 
 public interface MemberService {
-    Member createMember(String fullName, String email, String address, String phoneNumber, String memberId,
+    Member createMember(String fullName, String email, String address, String phoneNumber,
     String memberShipType, String startDate, String endDate, WorkoutPlan workoutPlan);
     List<Member> allMembers();
     Optional<Member> memberById(String memberId);

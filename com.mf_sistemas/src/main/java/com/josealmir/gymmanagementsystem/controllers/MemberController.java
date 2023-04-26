@@ -33,12 +33,11 @@ public class MemberController {
         String email = memberRequest.getEmail();
         String address = memberRequest.getAddress();
         String phoneNumber = memberRequest.getPhoneNumber();        
-        String memberId = memberRequest.getMemberId();
         String memberShipType = memberRequest.getMemberShipType();
         String startDate = memberRequest.getStartDate();
         String endDate = memberRequest.getEndDate();
         WorkoutPlan workoutPlan = memberRequest.getWorkoutPlan();
-        return memberService.createMember(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan);
+        return memberService.createMember(fullName, email, address, phoneNumber, memberShipType, startDate, endDate, workoutPlan);
     }
     @GetMapping("/{memberId}")
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {

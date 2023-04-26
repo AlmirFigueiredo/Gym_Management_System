@@ -15,9 +15,10 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberRepository memberRepository;
     @Override
-    public Member createMember(String fullName, String email, String address, String phoneNumber, String memberId,
+    public Member createMember(String fullName, String email, String address, String phoneNumber,
     String memberShipType, String startDate, String endDate, WorkoutPlan workoutPlan) {
-
+        int numberOfMembers = allMembers().size();
+        String memberId = String.format("%03d", numberOfMembers+1);
         Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
         return member;
     }
