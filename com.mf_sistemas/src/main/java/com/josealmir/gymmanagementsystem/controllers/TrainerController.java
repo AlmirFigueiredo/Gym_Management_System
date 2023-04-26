@@ -45,7 +45,7 @@ public class TrainerController {
     public ResponseEntity<Optional<Trainer>> getTrainerById(@PathVariable String trainerId) {
         return new ResponseEntity<Optional<Trainer>>(trainerService.trainerById(trainerId), HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{trainerId}")
+    @DeleteMapping("/{trainerId}")
     public ResponseEntity<Void> deleteTrainer(@PathVariable String trainerId) {
         trainerService.deleteByTrainerId(trainerId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
