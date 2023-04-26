@@ -50,6 +50,15 @@ function displayTrainers(trainers) {
         trainerCertificationNumberCell.textContent = trainer.certificationNumber;
         row.appendChild(trainerCertificationNumberCell);
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'delete-btn';
+        deleteButton.onclick = () => deleteTrainer(trainer.trainerId);
+
+        const deleteCell = document.createElement('td');
+        deleteCell.appendChild(deleteButton);
+        row.appendChild(deleteCell);
+
         trainerTableBody.appendChild(row);
     })
 }
