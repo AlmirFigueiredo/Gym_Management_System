@@ -1,5 +1,6 @@
 package com.josealmir.gymmanagementsystem.model.person;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,4 +20,13 @@ public class Trainer extends Person {
     private String speciality;
     private Double salary;
     private String certificationNumber;
+    public Trainer(String trainerId, String speciality, Double salary, String certificationNumber, String fullName, 
+    String phoneNumber, String address, String email) {
+        super(fullName, email, address, phoneNumber);
+        this.trainerId = trainerId;
+        this.speciality = speciality;
+        this.salary = salary;
+        this.certificationNumber = certificationNumber;
+    }
+    
 }

@@ -34,7 +34,12 @@ public class TrainerController {
         String speciality = trainerRequest.getSpeciality();
         Double salary = trainerRequest.getSalary();
         String certificationNumber = trainerRequest.getCertificationNumber();
-        return trainerService.createTrainer(trainerId, speciality, salary, certificationNumber);
+        String fullName = trainerRequest.getFullName();
+        String phoneNumber = trainerRequest.getPhoneNumber();
+        String address = trainerRequest.getAddress();
+        String email = trainerRequest.getEmail();
+        return trainerService.createTrainer(trainerId, speciality, salary, certificationNumber, fullName, 
+        phoneNumber, address, email);
     }
     @GetMapping("/{trainerId}")
     public ResponseEntity<Optional<Trainer>> getTrainerById(@PathVariable String trainerId) {
