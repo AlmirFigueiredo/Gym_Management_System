@@ -1,3 +1,5 @@
+document.getElementById('addMemberForm').addEventListener('submit', submitForm);
+
 async function createNewMember(memberInfo) {
     try {
         const response = await fetch('/Members', {
