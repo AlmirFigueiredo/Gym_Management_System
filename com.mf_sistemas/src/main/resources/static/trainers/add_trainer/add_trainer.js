@@ -1,7 +1,22 @@
 document.getElementById('addTrainerForm').addEventListener('submit', submitForm);
 
 async function createNewTrainer(trainerinfo) {
-
+    try {
+        const response = await fetch('/Trainers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(trainerinfo),
+        });
+        if(response.ok) {
+            alert('New trainer created succesfully');
+        } else {
+            alert('Failed to create new trainer');
+        }
+    } catch (error) {
+        console.error('Erro creating new trainer:', error);
+    }
 }
 
 function submitForm(event) {
