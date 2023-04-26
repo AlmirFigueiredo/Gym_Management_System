@@ -5,11 +5,13 @@ body {
 }
 h1 {
     text-align: center;
-    margin-top: 32px;
+    margin-top: 48px;
+    margin-bottom: 128px;
 }
 
 table {
-    width:40%;
+    width:100%;
+    max-width: 1200px;
     margin: 32px auto;
     border-collapse: collapse;
 }
@@ -21,4 +23,7 @@ th, td {
 th {
     background-color: #f2f2f2;
     font-weight: bold;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
