@@ -9,5 +9,15 @@ function submitForm(event) {
     const address = document.getElementById('email').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     
+    const newMember = {
+        fullName: fullName,
+        memberShipType: memberShipType,
+        startDate: startDate,
+        endDate: endDate,
+        email: email,
+        address: address,
+        phoneNumber: phoneNumber
+    }
+
     
 }
