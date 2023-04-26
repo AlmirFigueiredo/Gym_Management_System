@@ -1,6 +1,5 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
-import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -17,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberRepository memberRepository;
     @Override
     public Member createMember(String fullName, String email, String address, String phoneNumber, String memberId,
-    String memberShipType, Date startDate, Date endDate, WorkoutPlan workoutPlan) {
+    String memberShipType, String startDate, String endDate, WorkoutPlan workoutPlan) {
 
         Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
         return member;
