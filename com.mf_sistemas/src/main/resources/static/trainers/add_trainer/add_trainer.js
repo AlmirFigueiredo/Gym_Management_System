@@ -40,4 +40,5 @@ function submitForm(event) {
         address: address
     }
     createNewTrainer(newTrainer);
+    event.target.reset();
 }

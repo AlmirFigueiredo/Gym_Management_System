@@ -41,5 +41,6 @@ function submitForm(event) {
         phoneNumber: phoneNumber
     }
     createNewMember(newMember);
+    event.target.reset();
 }
 
