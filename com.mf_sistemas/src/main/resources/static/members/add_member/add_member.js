@@ -19,7 +19,6 @@ async function createNewMember(memberInfo) {
     }
 }
 
-
 function submitForm(event) {
     event.preventDefault();
 
@@ -42,6 +41,5 @@ function submitForm(event) {
     }
     createNewMember(newMember);
     event.target.reset();
-
 }
 
