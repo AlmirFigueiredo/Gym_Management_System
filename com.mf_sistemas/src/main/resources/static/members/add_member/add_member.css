@@ -2,21 +2,24 @@ body {
     font-family: Arial, sans-serif;
 }
 header {
+    position: relative;
     text-align: center;
     background-color: #f8f8f8;
     padding: 32px;
     margin-bottom: 16px;
 }
-button {
-    background-color: #989d91;
-    border: none;
-    color: black;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+
+.back-button {
+    position: absolute;
+    left: 32px;
+    width: 100px;
+    background-color: rgb(175, 170, 170);
+    cursor: pointer;
+}
+
+.submit-button {
+    width: 324px;
+    background-color: rgb(175, 170, 170);
     cursor: pointer;
 }
 form {

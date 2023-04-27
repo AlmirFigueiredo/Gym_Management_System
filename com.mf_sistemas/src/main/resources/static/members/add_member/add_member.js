@@ -42,5 +42,6 @@ function submitForm(event) {
     }
     createNewMember(newMember);
     event.target.reset();
+
 }
 
