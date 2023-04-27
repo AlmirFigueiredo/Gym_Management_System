@@ -18,7 +18,7 @@ async function deleteTrainer(trainerId) {
             method: 'DELETE',
         });
         if(response.ok) {
-            console.log(`Trainer with ID ${memberId} deleted`);
+            console.log(`Trainer with ID ${trainerId} deleted`);
             fetchTrainers();
         } else {
             console.error(`Failed to delete the Trainer with ID ${trainerId}`, error);
@@ -61,4 +61,16 @@ function displayTrainers(trainers) {
 
         trainerTableBody.appendChild(row);
     })
+}
+function toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const toggleMenuButton = document.getElementById('toggle-menu');
+
+    if(sidebar.style.width === 'Opx' || sidebar.style.width === '') {
+        sidebar.style.width = '200px';
+        toggleMenuButton.innerHTML = '←';
+    } else {
+        sidebar.style.width = '0px';
+        toggleMenuButton.innerHTML = '→';
+    }
 }

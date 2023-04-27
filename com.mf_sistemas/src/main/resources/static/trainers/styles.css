@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #032329;
     color: #0B6E81;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -61,4 +63,42 @@ tbody tr:nth-child(odd) {
 
 tbody tr:nth-child(even) {
     background-color: #222222;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+    transition: all 0.3s;
+}
+
+#toggle-menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu li a:hover {
+    background-color: #ddd;
 }
