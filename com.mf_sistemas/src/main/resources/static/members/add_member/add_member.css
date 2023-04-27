@@ -1,16 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000;
-    color: #FFA700;
+    background-color: #032329;
+    color: #0B6E81;
 }
 
 header {
     position: relative;
     text-align: center;
-    background-color: #FFA700;
+    background-color: #0B6E81;
     padding: 32px;
     margin-bottom: 16px;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 h1 {
@@ -21,10 +21,10 @@ h1 {
     position: absolute;
     left: 32px;
     width: 100px;
-    background-color: #333333;
+    background-color: #032329;
     cursor: pointer;
     border: none;
-    color: #FFA700;
+    color: #f2f5f5;
     font-size: 16px;
     padding: 8px 16px;
     border-radius: 4px;
@@ -32,10 +32,10 @@ h1 {
 
 .submit-button {
     width: 324px;
-    background-color: #FFA700;
+    background-color: #0B6E81;
     cursor: pointer;
     border: none;
-    color: #000000;
+    color: #FFFFFF;
     font-size: 16px;
     padding: 8px 16px;
     border-radius: 4px;
@@ -47,7 +47,7 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #032329;
     padding: 32px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -57,6 +57,7 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
+    color: #0B6E81;
 }
 
 input {
@@ -64,11 +65,11 @@ input {
     padding: 8px 12px;
     margin: 4px 0;
     box-sizing: border-box;
-    border: 1px solid #FFA700;
+    border: 1px solid #0B6E81;
     border-radius: 4px;
     font-size: 16px;
-    background-color: #000000;
-    color: #FFA700;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .message {
