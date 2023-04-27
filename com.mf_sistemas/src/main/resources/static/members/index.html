@@ -11,14 +11,16 @@
     <header>
         <h1>Members</h1>
     </header>
-    <button onclick="window.location.href='../index.html'">Back</button>
-    <button onclick="window.location.href='add_member/add_member.html'">Add Member</button>
+    <div class="button-container">
+        <button class="back-button" onclick="window.location.href='../index.html'">Back</button>
+        <button class="add-button" onclick="window.location.href='add_member/add_member.html'">+</button>
+    </div>
     <table id="memberTable">
         <thead>
           <tr>
             <th>Member ID</th>
-            <th>Name</th>
-            <th>MemberShip</th>
+            <th>Full Name</th>
+            <th>Membership Type</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Delete</th>
@@ -27,7 +29,6 @@
         <tbody>
         </tbody>
       </table>
-      
    
     <main id="main">
     </main>
