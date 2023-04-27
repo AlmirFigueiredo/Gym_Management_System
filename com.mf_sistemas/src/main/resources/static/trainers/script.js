@@ -66,11 +66,11 @@ function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     const toggleMenuButton = document.getElementById('toggle-menu');
 
-    if(sidebar.style.width === 'Opx' || sidebar.style.width === '') {
-        sidebar.style.width = '200px';
+    if (sidebar.style.left === '-200px' || sidebar.style.left === '') {
+        sidebar.style.left = '0px';
         toggleMenuButton.innerHTML = '←';
     } else {
-        sidebar.style.width = '0px';
+        sidebar.style.left = '-200px';
         toggleMenuButton.innerHTML = '→';
     }
 }
