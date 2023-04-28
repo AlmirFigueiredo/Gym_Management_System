@@ -62,15 +62,4 @@ function displayTrainers(trainers) {
         trainerTableBody.appendChild(row);
     })
 }
-function toggleMenu() {
-    const sidebar = document.getElementById('sidebar');
-    const toggleMenuButton = document.getElementById('toggle-menu');
 
-    if (sidebar.style.left === '-200px' || sidebar.style.left === '') {
-        sidebar.style.left = '0px';
-        toggleMenuButton.innerHTML = '←';
-    } else {
-        sidebar.style.left = '-200px';
-        toggleMenuButton.innerHTML = '→';
-    }
-}
