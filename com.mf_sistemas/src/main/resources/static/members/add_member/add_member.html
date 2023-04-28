@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Member</title>
-    <link rel="stylesheet" href="add_member.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Trainer</title>
+  <link rel="stylesheet" href="add_member.css">
 </head>
 <body>
-    <header>
-        <button class="back-button" onclick="window.location.href='../index.html'">Back</button>  
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <h1>GYM</h1>
+      </header>
+      <nav>
+        <ul class="menu">
+          <li><a href="home.html">Home</a></li>
+          <li class="menu-item">
+            <a href="#">Members</a>
+            <ul class="sub-menu">
+              <li><a href="../../members/index.html">Members' Detail</a></li>
+              <li><a href="../../members/add_member/add_member.html">Add New Member</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#">Trainers</a>
+            <ul class="sub-menu">
+              <li><a href="../index.html">Trainers' Detail</a></li>
+              <li><a href="add_trainer.html">Add New Trainer</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="main">
+      <header>
         <h1>Add Member</h1>
-    </header>
-    
-    <form id="addMemberForm">
+      </header>
+      <form id="addMemberForm">
         <label for="fullName">Full Name:</label>
         <input type="text" id="fullName" name="fullName" placeholder="None" required>
         
@@ -25,17 +51,21 @@
         
         <label for="endDate">End Date:</label>
         <input type="text" id="endDate" name="endDate" placeholder="None" required>
-
+    
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" placeholder="None" required>
-
+    
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" placeholder="None" required>
-
+    
         <label for="phoneNumber">Phone Number:</label>
         <input type="text" id="phoneNumber" name="phoneNumber" placeholder="None" required>
         <button class="submit-button" type="submit" form="addMemberForm">Submit</button>
     </form>
-    <script src="add_member.js"></script>
+    </div>
+  </div>
+  <script src="add_trainer.js"></script>
 </body>
 </html>
+
+
