@@ -1,38 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members' page</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Members</h1>
-    </header>
-    <div class="button-container">
-        <button class="back-button" onclick="window.location.href='../index.html'">Back</button>
-        <button class="add-button" onclick="window.location.href='add_member/add_member.html'">+</button>
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <h1>GYM</h1>
+      </header>
+      <nav>
+        <ul class="menu">
+          <li><a href="home.html">Home</a></li>
+          <li class="menu-item">
+            <a href="#">Members</a>
+            <ul class="sub-menu">
+              <li><a href="index.html">Members' Detail</a></li>
+              <li><a href="add_member/add_member.html">Add New Member</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#">Trainers</a>
+            <ul class="sub-menu">
+              <li><a href="../trainers/index.html">Trainers' Detail</a></li>
+              <li><a href="../trainers/add_trainer/add_trainer.html">Add New Trainer</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <table id="memberTable">
-        <thead>
-          <tr>
-            <th>Member ID</th>
-            <th>Full Name</th>
-            <th>Membership Type</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-   
-    <main id="main">
-    </main>
-
-    <script src="script.js"></script>
+    <div class="main">
+      <header>
+        <h1>Members' Detail</h1>
+      </header>
+      <main>
+        <table id="trainerTable">
+          <thead>
+            <tr>
+              <th>Member ID</th>
+              <th>Full Name</th>
+              <th>Membership Type</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
+

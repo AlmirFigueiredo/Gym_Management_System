@@ -1,4 +1,3 @@
-/* General styles */
 
 body {
     font-family: Arial, sans-serif;
@@ -8,14 +7,13 @@ body {
     padding: 0;
   }
   
-  /* Container styles */
   
   .container {
     display: flex;
     min-height: 100vh;
   }
   
-  /* Sidebar styles */
+
   
   .sidebar {
     width: 100px; 
@@ -80,7 +78,7 @@ body {
     padding: 16px;
     text-decoration: none;
     color: #333;
-    text-align: center; /* Centered submenu items */
+    text-align: center; 
   }
   
   .sidebar .sub-menu li a:hover {
@@ -95,7 +93,6 @@ body {
     content: '▼';
   }
   
-  /* Main content styles */
   
   .main {
     flex: 1;
