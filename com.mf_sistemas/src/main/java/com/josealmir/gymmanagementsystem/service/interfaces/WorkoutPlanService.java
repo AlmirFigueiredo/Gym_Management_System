@@ -12,4 +12,5 @@ public interface WorkoutPlanService {
     WorkoutPlan createWorkoutPlan(Member member, Trainer trainer, String startDate, String endDate, List<DailyWorkout> dailyWorkouts);
     List<WorkoutPlan> allWorkoutPlans();
     Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId);
+    void deleteByIds(String trainerId, String memberId);
 }

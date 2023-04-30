@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,14 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     @Override
     public Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId) {
         return workoutPlanRepository.findWorkoutPlanBIds(memberId, trainerId);
+    }
+    @Override
+    public void deleteByIds(String trainerId, String memberId) {
+        Optional<WorkoutPlan> workoutPlan = workoutPlanRepository.findWorkoutPlanBIds(memberId, trainerId);
+        if(workoutPlan.isEmpty()) {
+            workoutPlanRepository.delete(workoutPlan.get());
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }
