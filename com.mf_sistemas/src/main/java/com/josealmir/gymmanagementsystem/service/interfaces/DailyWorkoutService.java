@@ -10,6 +10,6 @@ public interface DailyWorkoutService {
     DailyWorkout createDailyWorkout(String dayOfWeek, List<Exercise> exercises);
     List<DailyWorkout> allDailyWorkouts();
     Optional<DailyWorkout> dailyWorkoutByDayOfWeek(String dayOfWeek);
-    
+    void deleteDailyWorkout(String dayOfWeek);
 
 }
