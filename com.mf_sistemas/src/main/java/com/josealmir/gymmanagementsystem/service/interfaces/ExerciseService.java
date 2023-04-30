@@ -9,4 +9,5 @@ public interface ExerciseService {
     Exercise createExercise(String name, Integer quantitySets, Integer quantityReps, Integer resTimeSeconds);
     List<Exercise> allExercises();
     Optional<Exercise> exerciseByName(String name);
+    void deleteExerciseByName(String name);
 }
