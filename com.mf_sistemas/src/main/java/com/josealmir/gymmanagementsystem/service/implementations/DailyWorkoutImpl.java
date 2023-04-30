@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,9 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
     public DailyWorkout createDailyWorkout(String dayOfWeek, List<Exercise> exercises) {
         DailyWorkout dailyWorkout = dailyWorkoutRepository.insert(new DailyWorkout(dayOfWeek, exercises));
         return dailyWorkout;
+    }
+    @Override
+    public Optional<DailyWorkout> dailyWorkoutByDayOfWeek(String dayOfWeek) {
+        return dailyWorkoutRepository.findDailyWorkoutByDayOfWeek(dayOfWeek);
     }
 }
