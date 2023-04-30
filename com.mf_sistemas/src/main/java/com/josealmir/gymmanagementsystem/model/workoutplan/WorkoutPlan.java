@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkoutPlan {
+    private Member member;
     private Trainer trainer;
     private String startDate;
     private String endDate;
