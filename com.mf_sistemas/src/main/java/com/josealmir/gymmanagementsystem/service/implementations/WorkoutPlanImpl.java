@@ -21,4 +21,9 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
         WorkoutPlan workoutPlan = workoutPlanRepository.insert(new WorkoutPlan(member, trainer, startDate, endDate, dailyWorkouts));
         return workoutPlan;
     }
+    @Override
+    public List<WorkoutPlan> allWorkoutPlans() {
+        return workoutPlanRepository.findAll();
+    }
+    
 }

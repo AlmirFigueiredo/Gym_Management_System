@@ -9,4 +9,5 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 
 public interface WorkoutPlanService {
     WorkoutPlan createWorkoutPlan(Member member, Trainer trainer, String startDate, String endDate, List<DailyWorkout> dailyWorkouts);
+    List<WorkoutPlan> allWorkoutPlans();
 }
