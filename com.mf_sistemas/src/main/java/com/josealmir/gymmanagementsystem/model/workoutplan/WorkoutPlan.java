@@ -1,47 +1,24 @@
 package com.josealmir.gymmanagementsystem.model.workoutplan;
 
-import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Document(collection = "workoutplans")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class WorkoutPlan {
     private Trainer trainer;
-    private LocalDate starDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
+    @DocumentReference
     private List<DailyWorkout> dailyWorkouts;
-
-    public WorkoutPlan() {}
-
-    public Trainer getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
-    }
-
-    public LocalDate getStarDate() {
-        return starDate;
-    }
-
-    public void setStarDate(LocalDate starDate) {
-        this.starDate = starDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public List<DailyWorkout> getDailyWorkouts() {
-        return dailyWorkouts;
-    }
-
-    public void setDailyWorkouts(List<DailyWorkout> dailyWorkouts) {
-        this.dailyWorkouts = dailyWorkouts;
-    }
 }
