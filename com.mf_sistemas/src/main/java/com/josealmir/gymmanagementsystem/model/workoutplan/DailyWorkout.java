@@ -1,28 +1,22 @@
 package com.josealmir.gymmanagementsystem.model.workoutplan;
 
-import java.util.LinkedList;
+import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Document(collection = "dailyWorkouts")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DailyWorkout {
+    @Id
     private String dayOfWeek;
-    private LinkedList<Exercise> exercises;
-
-    public DailyWorkout() {}
-
-    public String getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
-    public LinkedList<Exercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(LinkedList<Exercise> exercises) {
-        this.exercises = exercises;
-    }
-
-    
+    @DocumentReference
+    private List<Exercise> exercises;    
 }
