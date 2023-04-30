@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,8 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     public List<WorkoutPlan> allWorkoutPlans() {
         return workoutPlanRepository.findAll();
     }
-    
+    @Override
+    public Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId) {
+        return workoutPlanRepository.findWorkoutPlanBIds(memberId, trainerId);
+    }
 }
