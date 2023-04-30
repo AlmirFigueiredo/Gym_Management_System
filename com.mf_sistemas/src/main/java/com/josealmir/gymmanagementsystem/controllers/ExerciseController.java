@@ -25,7 +25,7 @@ public class ExerciseController {
     private ExerciseService exerciseService;
 
     @PostMapping()
-    public Exercise creatExercise(@RequestBody ExerciseRequest exerciseRequest) {
+    public Exercise createExercise(@RequestBody ExerciseRequest exerciseRequest) {
         String name = exerciseRequest.getName();
         Integer quantitySets = exerciseRequest.getQuantitySets();
         Integer quantityReps = exerciseRequest.getQuantityReps();
