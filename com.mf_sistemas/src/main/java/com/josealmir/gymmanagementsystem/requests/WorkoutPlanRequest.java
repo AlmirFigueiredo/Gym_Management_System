@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class WorkoutPlanRequest {
+    private String workoutPlanId;
     private Member member;
     private Trainer trainer;
     private String startDate;

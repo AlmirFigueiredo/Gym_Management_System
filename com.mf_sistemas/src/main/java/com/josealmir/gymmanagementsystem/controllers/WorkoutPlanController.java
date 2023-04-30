@@ -41,11 +41,11 @@ public class WorkoutPlanController {
         List<DailyWorkout> dailyWorkouts = workoutPlanRequest.getDailyWorkouts();
         return workoutPlanService.createWorkoutPlan(member, trainer, startDate, endDate, dailyWorkouts);
     }
-    @GetMapping("/{memberId}{trainerId}")
+    @GetMapping("/{workoutPlanId}")
     public ResponseEntity<Optional<WorkoutPlan>> getWorkoutPlanByIds(@PathVariable String memberId, String trainerId) {
         return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanByIds(memberId, trainerId), HttpStatus.OK);
     }
-    @DeleteMapping("/{memberId}{trainerId}")
+    @DeleteMapping("/{workoutPlanId}")
     public ResponseEntity<Void> deleteByIds(@PathVariable String memberId, String trainerId) {
         workoutPlanService.deleteByIds(trainerId, memberId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

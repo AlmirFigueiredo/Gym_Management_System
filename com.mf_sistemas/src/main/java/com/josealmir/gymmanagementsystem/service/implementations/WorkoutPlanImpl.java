@@ -20,7 +20,8 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     private WorkoutPlanRepository workoutPlanRepository;
     @Override
     public WorkoutPlan createWorkoutPlan(Member member, Trainer trainer, String startDate, String endDate, List<DailyWorkout> dailyWorkouts) {
-        WorkoutPlan workoutPlan = workoutPlanRepository.insert(new WorkoutPlan(member, trainer, startDate, endDate, dailyWorkouts));
+        String workoutPlanId = member.getMemberId() + trainer.getTrainerId();
+        WorkoutPlan workoutPlan = workoutPlanRepository.insert(new WorkoutPlan(workoutPlanId, member, trainer, startDate, endDate, dailyWorkouts));
         return workoutPlan;
     }
     @Override
