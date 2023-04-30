@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class DailyWorkoutRequest {
+    private String id;
     private String dayOfWeek;
     private List<Exercise> exercises;
 }

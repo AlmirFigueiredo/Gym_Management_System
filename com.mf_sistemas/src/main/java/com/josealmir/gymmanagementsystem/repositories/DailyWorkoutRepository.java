@@ -10,5 +10,5 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 
 @Repository
 public interface DailyWorkoutRepository extends MongoRepository<DailyWorkout, ObjectId> {
-    Optional<DailyWorkout> findDailyWorkoutByDayOfWeek(String dayOfWeek);
+    Optional<DailyWorkout> findDailyWorkoutById(String id);
 }

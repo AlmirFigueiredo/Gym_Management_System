@@ -28,9 +28,9 @@ public class DailyWorkoutController {
     public ResponseEntity<List<DailyWorkout>> getAllDailyWorkouts() {
         return new ResponseEntity<List<DailyWorkout>>(dailyWorkoutService.allDailyWorkouts(), HttpStatus.OK);
     }
-    @GetMapping("/{WorkoutPlanId}/{dayOfWeek}")
-    public ResponseEntity<Optional<DailyWorkout>> getDailyWorkoutByDayOfWeek(String dayOfWeek) {
-        return new ResponseEntity<Optional<DailyWorkout>>(dailyWorkoutService.dailyWorkoutByDayOfWeek(dayOfWeek), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<DailyWorkout>> getDailyWorkoutByDayOfWeek(String id) {
+        return new ResponseEntity<Optional<DailyWorkout>>(dailyWorkoutService.dailyWorkoutById(id), HttpStatus.OK);
     }
 
     @PostMapping
@@ -39,9 +39,9 @@ public class DailyWorkoutController {
         List<Exercise> exercises = dailyWorkout.getExercises();
         return dailyWorkoutService.createDailyWorkout(dayOfWeek, exercises);
     }
-    @DeleteMapping("/{WorkoutPlanId}/{dayOfWeek}")
-    public ResponseEntity<Void> deleteDailyWorkout(@PathVariable String dayOfWeek) {
-        dailyWorkoutService.dailyWorkoutByDayOfWeek(dayOfWeek);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDailyWorkout(@PathVariable String id) {
+        dailyWorkoutService.dailyWorkoutById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

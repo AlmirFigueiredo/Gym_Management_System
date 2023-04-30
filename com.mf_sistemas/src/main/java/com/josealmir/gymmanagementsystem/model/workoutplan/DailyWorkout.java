@@ -16,7 +16,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DailyWorkout {
     @Id
+    private String id;
     private String dayOfWeek;
     @DocumentReference
-    private List<Exercise> exercises;    
+    private List<Exercise> exercises;   
+    public DailyWorkout(String dayOfWeek, List<Exercise> exercises) {
+        this.dayOfWeek = dayOfWeek;
+        this.exercises = exercises;
+    } 
 }

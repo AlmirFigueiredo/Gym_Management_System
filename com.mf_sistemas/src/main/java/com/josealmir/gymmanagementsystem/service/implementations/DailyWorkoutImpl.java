@@ -27,12 +27,12 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
         return dailyWorkoutRepository.findAll();
     }
     @Override
-    public Optional<DailyWorkout> dailyWorkoutByDayOfWeek(String dayOfWeek) {
-        return dailyWorkoutRepository.findDailyWorkoutByDayOfWeek(dayOfWeek);
+    public Optional<DailyWorkout> dailyWorkoutById(String id) {
+        return dailyWorkoutRepository.findDailyWorkoutById(id);
     }
     @Override
-    public void deleteDailyWorkout(String dayOfWeek) {
-        Optional<DailyWorkout> dailyWorkout = dailyWorkoutRepository.findDailyWorkoutByDayOfWeek(dayOfWeek);
+    public void deleteDailyWorkout(String id) {
+        Optional<DailyWorkout> dailyWorkout = dailyWorkoutRepository.findDailyWorkoutById(id);
         if(dailyWorkout.isPresent()) {
             dailyWorkoutRepository.delete(dailyWorkout.get());
         } else {
