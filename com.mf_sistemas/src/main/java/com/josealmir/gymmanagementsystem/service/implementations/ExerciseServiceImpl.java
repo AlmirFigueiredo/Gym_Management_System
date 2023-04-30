@@ -1,6 +1,7 @@
 package com.josealmir.gymmanagementsystem.service.implementations;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,9 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public List<Exercise> allExercises() {
         return exerciseRepository.findAll();
+    }
+    @Override
+    public Optional<Exercise> exerciseByName(String name) {
+        return exerciseRepository.findExerciseByName(name);
     }
 }

@@ -18,7 +18,7 @@ public class ExerciseController {
     @Autowired
     private ExerciseService exerciseService;
 
-    @GetMapping
+    @GetMapping("/{name}")
     public ResponseEntity<List<Exercise>> getAllExercises() {
         return new ResponseEntity<List<Exercise>>(exerciseService.allExercises(), HttpStatus.OK);
     }
