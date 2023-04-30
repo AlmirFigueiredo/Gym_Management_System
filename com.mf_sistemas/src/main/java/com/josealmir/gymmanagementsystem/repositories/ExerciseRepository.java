@@ -10,5 +10,5 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
 
 @Repository
 public interface ExerciseRepository extends MongoRepository<Exercise, ObjectId> {
-    Optional<Exercise> findExerciseByName(String name);
+    Optional<Exercise> findExerciseById(String id);
 }

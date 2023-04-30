@@ -34,7 +34,7 @@ public class DailyWorkoutController {
     }
 
     @PostMapping
-    public DailyWorkout createWorkoutPlan(@RequestBody DailyWorkout dailyWorkout) {
+    public DailyWorkout createDailyWorkoutPlan(@RequestBody DailyWorkout dailyWorkout) {
         String dayOfWeek = dailyWorkout.getDayOfWeek();
         List<Exercise> exercises = dailyWorkout.getExercises();
         return dailyWorkoutService.createDailyWorkout(dayOfWeek, exercises);

@@ -14,8 +14,15 @@ import lombok.NoArgsConstructor;
 
 public class Exercise {
     @Id
+    private String id;
     private String name;
     private Integer quantitySets;
     private Integer quantityReps;
     private Integer resTimeSeconds;    
+    public Exercise(String name, Integer quantitySets, Integer quantityReps, Integer resTimeSeconds) {
+        this.name = name;
+        this.quantityReps = quantityReps;
+        this.quantitySets = quantitySets;
+        this.resTimeSeconds = resTimeSeconds;
+    }
 }
