@@ -52,7 +52,6 @@ function displayWorkoutPlans(workoutPlans) {
         row.addEventListener('click', () => {
             window.location.href = `workoutplan_details/workoutplan_details.html?workoutPlanId=${workoutPlan.id}`;
         });
-
         workoutPlanTable.appendChild(row);
     });
 }
