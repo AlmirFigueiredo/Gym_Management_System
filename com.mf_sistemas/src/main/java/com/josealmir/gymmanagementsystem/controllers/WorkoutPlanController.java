@@ -29,10 +29,17 @@ public class WorkoutPlanController {
     public ResponseEntity<List<WorkoutPlan>> getAllWorkoutPlans() {
         return new ResponseEntity<List<WorkoutPlan>>(workoutPlanService.allWorkoutPlans(), HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<WorkoutPlan>> getWorkoutByIds(@PathVariable String id) {
         return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanById(id), HttpStatus.OK);
     }
+
+    @GetMapping("/member/{memberId}")
+    public ResponseEntity<List<WorkoutPlan>> getWorkoutPlansByMemberId(@PathVariable String memberId) {
+        return new ResponseEntity<>(workoutPlanService.findWorkoutPlansByMemberId(memberId), HttpStatus.OK);
+    }
+
     @PostMapping
     public WorkoutPlan createWorkoutPlan(@RequestBody WorkoutPlanRequest workoutPlanRequest) {
         String memberId = workoutPlanRequest.getMemberId();
@@ -42,9 +49,11 @@ public class WorkoutPlanController {
         List<DailyWorkout> dailyWorkouts = workoutPlanRequest.getDailyWorkouts();
         return workoutPlanService.createWorkoutPlan(memberId, trainerId, startDate, endDate, dailyWorkouts);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteByIds(@PathVariable String id) {
-        workoutPlanService.deleteById(id);;
+        workoutPlanService.deleteById(id);
+        ;
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

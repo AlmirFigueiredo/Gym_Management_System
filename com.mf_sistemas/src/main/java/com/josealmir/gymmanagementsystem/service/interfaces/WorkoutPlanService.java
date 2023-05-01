@@ -10,6 +10,7 @@ public interface WorkoutPlanService {
     List<WorkoutPlan> allWorkoutPlans();
     Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId);
     Optional<WorkoutPlan> findWorkoutPlanById(String id);
+    List<WorkoutPlan> findWorkoutPlansByMemberId(String memberId);
     void deleteById(String id);
     void deleteByIds(String trainerId, String memberId);
 }

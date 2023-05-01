@@ -3,6 +3,7 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,13 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     }
 
     @Override
+    public List<WorkoutPlan> findWorkoutPlansByMemberId(String memberId) {
+        return workoutPlanRepository.findAll().stream()
+                .filter(workoutPlan -> memberId.equals(workoutPlan.getMemberId()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId) {
         return workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
     }
@@ -49,10 +57,11 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
             throw new NoSuchElementException();
         }
     }
+
     @Override
     public void deleteById(String id) {
         Optional<WorkoutPlan> workoutPlan = workoutPlanRepository.findById(id);
-        if(workoutPlan.isPresent()) {
+        if (workoutPlan.isPresent()) {
             workoutPlanRepository.delete(workoutPlan.get());
         } else {
             throw new NoSuchElementException();
