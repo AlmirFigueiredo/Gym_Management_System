@@ -27,6 +27,10 @@ function displayWorkoutPlans(workoutPlans) {
         memberNameCell.textContent = workoutPlan.member.fullName;
         row.appendChild(memberNameCell);
 
+        const trainerIdCell = document.createElement('td');
+        trainerIdCell.textContent = workoutPlan.trainer.trainerId;
+        row.appendChild(trainerIdCell);
+        
         const startDate = document.createElement('td');
         startDate.textContent = workoutPlan.startDate;
         row.appendChild(startDate);
