@@ -15,16 +15,36 @@ function fetchWorkoutPlanDetails(workoutPlanId) {
 }
 
 function displayWorkoutPlanDetails(workoutPlan) {
-    document.querySelector('#memberId').textContent = workoutPlan.member.memberId;
-    document.querySelector('#memberName').textContent = workoutPlan.member.fullName;
-    document.querySelector('#trainerId').textContent = workoutPlan.trainer.trainerId;
-    document.querySelector('#startDate').textContent = workoutPlan.startDate;
-    document.querySelector('#endDate').textContent = workoutPlan.endDate;
+    if (!workoutPlan) {
+        console.error('Workout plan object is undefined.');
+        return;
+    }
 
-    const exerciseList = document.querySelector('#exercisesList');
-    workoutPlan.exercises.forEach(exercise => {
-        const listItem = document.createElement('li');
-        listItem.textContent = exercise.name;
-        exerciseList.appendChild(listItem)
-    });
+    const memberIdElement = document.querySelector('#memberId');
+    const memberNameElement = document.querySelector('#memberName');
+    const trainerIdElement = document.querySelector('#trainerId');
+    const startDateElement = document.querySelector('#startDate');
+    const endDateElement = document.querySelector('#endDate');
+    const exercisesListElement = document.querySelector('#exercisesList');
+
+    if (workoutPlan.member) {
+        memberIdElement.textContent = workoutPlan.member.memberId || '';
+        memberNameElement.textContent = workoutPlan.member.fullName || '';
+    }
+
+    if (workoutPlan.trainer) {
+        trainerIdElement.textContent = workoutPlan.trainer.trainerId || '';
+    }
+
+    startDateElement.textContent = workoutPlan.startDate || '';
+    endDateElement.textContent = workoutPlan.endDate || '';
+
+    if (workoutPlan.exercises) {
+        workoutPlan.exercises.forEach(exercise => {
+            const listItem = document.createElement('li');
+            listItem.textContent = exercise.name;
+            exercisesListElement.appendChild(listItem);
+        });
+    }
 }
+

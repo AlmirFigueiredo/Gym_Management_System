@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josealmir.gymmanagementsystem.model.person.Member;
@@ -42,9 +43,9 @@ public class WorkoutPlanController {
         return workoutPlanService.createWorkoutPlan(member, trainer, startDate, endDate, dailyWorkouts);
     }
     @GetMapping("/{workoutPlanId}")
-    public ResponseEntity<Optional<WorkoutPlan>> getWorkoutPlanByIds(@PathVariable String memberId, String trainerId) {
+    public ResponseEntity<Optional<WorkoutPlan>> getWorkoutPlanByIds(@PathVariable String workoutPlanId, @RequestParam String memberId, @RequestParam String trainerId) {
         return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanByIds(memberId, trainerId), HttpStatus.OK);
-    }
+    }    
     @DeleteMapping("/{workoutPlanId}")
     public ResponseEntity<Void> deleteByIds(@PathVariable String memberId, String trainerId) {
         workoutPlanService.deleteByIds(trainerId, memberId);
