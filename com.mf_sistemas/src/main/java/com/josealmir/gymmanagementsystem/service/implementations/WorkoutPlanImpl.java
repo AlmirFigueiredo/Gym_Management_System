@@ -35,12 +35,12 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
 
     @Override
     public Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId) {
-        return workoutPlanRepository.findByIds(memberId, trainerId);
+        return workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
     }
 
     @Override
     public void deleteByIds(String trainerId, String memberId) {
-        Optional<WorkoutPlan> workoutplan = workoutPlanRepository.findByIds(memberId, trainerId);
+        Optional<WorkoutPlan> workoutplan = workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
         if(workoutplan.isPresent()) {
             workoutPlanRepository.delete(workoutplan.get());
         } else {

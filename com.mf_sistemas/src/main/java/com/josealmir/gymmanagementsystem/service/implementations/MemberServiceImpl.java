@@ -3,6 +3,9 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.person.Member;
@@ -17,10 +20,13 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member createMember(String fullName, String email, String address, String phoneNumber,
     String memberShipType, String startDate, String endDate, WorkoutPlan workoutPlan) {
-        int numberOfMembers = allMembers().size();
-        String memberId = String.format("%03d", numberOfMembers+1);
-        Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
-        return member;
+        String memberId = generateNextMemberId();
+        if(memberId != null) {
+            Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
+            return member;
+        } else {
+            throw new IllegalStateException("Member limit reached. Cannot create more members.");
+        }
     }
     @Override
     public List<Member> allMembers() {
@@ -56,5 +62,17 @@ public class MemberServiceImpl implements MemberService {
         } else {
             throw new NoSuchElementException();
         }
+    }
+    private String generateNextMemberId() {
+        List<Member> members = allMembers();
+        Set<String> usedIds = members.stream().map(Member::getMemberId).collect(Collectors.toSet());
+    
+        for (int i = 1; i <= 9999; i++) {
+            String candidateId = String.format("%04d", i);
+            if (!usedIds.contains(candidateId)) {
+                return candidateId;
+            }
+        }
+        return null;
     }
 }

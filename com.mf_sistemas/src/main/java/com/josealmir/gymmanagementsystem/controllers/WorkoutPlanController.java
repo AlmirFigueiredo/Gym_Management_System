@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
 
@@ -24,10 +25,13 @@ public class WorkoutPlanController {
     public ResponseEntity<List<WorkoutPlan>> getAllWorkoutPlans() {
         return new ResponseEntity<List<WorkoutPlan>>(workoutPlanService.allWorkoutPlans(), HttpStatus.OK);
     }
-
+    @GetMapping("/{memberId}/{trainerId}")
+    public ResponseEntity<Optional<WorkoutPlan>> getWorkoutByIds(@PathVariable String memberId, @PathVariable String trainerId) {
+        return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanByIds(trainerId, memberId), HttpStatus.OK);
+    }
    
-    @DeleteMapping("/{workoutPlanId}")
-    public ResponseEntity<Void> deleteByIds(@PathVariable String memberId, String trainerId) {
+    @DeleteMapping("/{memberId}/{trainerId}")
+    public ResponseEntity<Void> deleteByIds(@PathVariable String memberId, @PathVariable String trainerId) {
         workoutPlanService.deleteByIds(trainerId, memberId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
