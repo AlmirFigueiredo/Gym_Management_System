@@ -39,6 +39,11 @@ function displayWorkoutPlans(workoutPlans) {
         endDate.textContent = workoutPlan.endDate;
         row.appendChild(endDate);
         
+        row.classList.add('table-row-button');
+        row.addEventListener('click', () => {
+            window.location.href = '';
+        });
+
         workoutPlanTable.appendChild(row);
     });
 }

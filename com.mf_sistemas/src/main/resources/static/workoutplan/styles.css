@@ -1,20 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #032329;
-    color:#0B6E81;
+    color: #0B6E81;
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     min-height: 100vh;
 }
+
 .sidebar {
     width: 120px;
     background-color: #0B6E81;
     color: white;
     padding: 32px;
 }
+
 .sidebar h1 {
     margin-top: 0;
     margin-bottom: 32px;
@@ -44,9 +47,11 @@ body {
 .sidebar .menu li a:hover {
     background-color: #0c7a97;
 }
+
 .sidebar .menu-item {
     position: relative;
 }
+
 .sidebar .menu-item a::after {
     font-size: 12px;
     margin-left: 8px;
@@ -61,7 +66,7 @@ body {
     min-width: 150px;
     list-style-type: none;
     padding: 0;
-    box-shadow: 0px 8px 16px 0px rgba(0,0 ,0 ,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar .sub-menu li a {
@@ -85,5 +90,58 @@ body {
 }
 
 .sidebar .menu-item.has-arrow a::after {
-    content:'▼';
+    content: '▼';
+}
+
+.main {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 32px;
+}
+
+.main h1 {
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-size: 36px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #0B6E81;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 16px;
+}
+
+thead {
+    background-color: #0B6E81;
+    color: #FFFFFF;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #333333;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #222222;
+}
+
+.table-row-button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.table-row-button:hover {
+    background-color: #f0f0f0;
 }
