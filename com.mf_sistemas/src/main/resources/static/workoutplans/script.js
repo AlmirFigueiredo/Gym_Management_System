@@ -41,7 +41,7 @@ function displayWorkoutPlans(workoutPlans) {
         
         row.classList.add('table-row-button');
         row.addEventListener('click', () => {
-            window.location.href = '';
+            window.location.href = 'workoutplan_details/workoutplan_details.html';
         });
 
         workoutPlanTable.appendChild(row);
