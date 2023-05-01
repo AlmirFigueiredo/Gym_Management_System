@@ -6,9 +6,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.josealmir.gymmanagementsystem.model.person.Member;
-import com.josealmir.gymmanagementsystem.model.person.Trainer;
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.repositories.WorkoutPlanRepository;
@@ -20,11 +17,11 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     private WorkoutPlanRepository workoutPlanRepository;
 
     @Override
-    public WorkoutPlan createWorkoutPlan(Member member, Trainer trainer, String startDate, String endDate,
+    public WorkoutPlan createWorkoutPlan(String memberId, String trainerId, String startDate, String endDate,
             List<DailyWorkout> dailyWorkouts) {
-        String workoutPlanId = member.getMemberId() + trainer.getTrainerId();
+        String workoutPlanId = memberId+trainerId;
         WorkoutPlan workoutPlan = workoutPlanRepository
-                .insert(new WorkoutPlan(workoutPlanId, member, trainer, startDate, endDate, dailyWorkouts));
+                .insert(new WorkoutPlan(workoutPlanId, memberId, trainerId, startDate, endDate, dailyWorkouts));
         return workoutPlan;
     }
 
