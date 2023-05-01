@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Workout Plans</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Members' page</title>
+    <link rel="stylesheet" href="member_details.css">
 </head>
 
 <body>
     <div class="container">
-
         <div class="sidebar">
             <header>
                 <h1>GYM</h1>
@@ -22,9 +21,8 @@
                     <li class="menu-item">
                         <a href="#">Members</a>
                         <ul class="sub-menu">
-                            <li><a href="../members/index.html">All Members</a></li>
-                            <li><a href="../members/member_details/member_details.html">Member Details</a></li>
-                            <li><a href="../members/add_member/add_member.html">Add New Member</a></li>
+                            <li><a href="index.html">All Members</a></li>
+                            <li><a href="add_member/add_member.html">Add New Member</a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
@@ -37,7 +35,7 @@
                     <li class="menu-item">
                         <a href="#">WorkoutPlans</a>
                         <ul class="sub-menu">
-                            <li><a href="index.html">All WorkoutPlans</a></li>
+                            <li><a href="../workoutplans/index.html">All WorkoutPlans</a></li>
                         </ul>
                     </li>
                     <li><a href="about.html">About</a></li>
@@ -46,27 +44,10 @@
             </nav>
         </div>
         <div class="main">
-            <header>
-                <h1>WorkoutPlans</h1>
-            </header>
-            <main>
-                <table id="workoutPlanTable">
-                    <thead>
-                        <tr>
-                            <th>Member ID</th>
-                            <th>Member Name</th>
-                            <th>Trainer ID</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </main>
+    
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="member_details.js"></script>
 </body>
 
 </html>
