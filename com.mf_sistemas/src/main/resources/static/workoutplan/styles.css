@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
 }
 .sidebar {
-    width: 100px;
+    width: 120px;
     background-color: #0B6E81;
     color: white;
     padding: 32px;
@@ -58,7 +58,7 @@ body {
     left: 100%;
     top: 0;
     background-color: #f8f8f8;
-    min-width: 100%;
+    min-width: 150px;
     list-style-type: none;
     padding: 0;
     box-shadow: 0px 8px 16px 0px rgba(0,0 ,0 ,0.2);
@@ -66,7 +66,7 @@ body {
 
 .sidebar .sub-menu li a {
     display: block;
-    padding: 16px;
+    padding: 8px 16px;
     text-decoration: none;
     color: #333;
     text-align: center;
@@ -85,5 +85,5 @@ body {
 }
 
 .sidebar .menu-item.has-arrow a::after {
-    content: '▼';
+    content:'▼';
 }
