@@ -12,7 +12,7 @@ body {
 }
 
 .sidebar {
-  width: 100px;
+  width: 120px;
   background-color: #0B6E81;
   color: white;
   padding: 32px;
@@ -90,7 +90,7 @@ body {
   content: '▼';
 }
 
-/* Main content styles */
+
 
 .main {
   flex: 1;
