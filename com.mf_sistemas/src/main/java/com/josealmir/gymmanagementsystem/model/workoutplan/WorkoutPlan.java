@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WorkoutPlan {
     @Id
-    private String Id;
+    private String id;
     private String memberId;
     private String trainerId;
     private String startDate;

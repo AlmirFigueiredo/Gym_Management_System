@@ -19,15 +19,20 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     @Override
     public WorkoutPlan createWorkoutPlan(String memberId, String trainerId, String startDate, String endDate,
             List<DailyWorkout> dailyWorkouts) {
-        String workoutPlanId = memberId+trainerId;
+        String id = memberId + trainerId;
         WorkoutPlan workoutPlan = workoutPlanRepository
-                .insert(new WorkoutPlan(workoutPlanId, memberId, trainerId, startDate, endDate, dailyWorkouts));
+                .insert(new WorkoutPlan(id, memberId, trainerId, startDate, endDate, dailyWorkouts));
         return workoutPlan;
     }
 
     @Override
     public List<WorkoutPlan> allWorkoutPlans() {
         return workoutPlanRepository.findAll();
+    }
+
+    @Override
+    public Optional<WorkoutPlan> findWorkoutPlanById(String id) {
+        return workoutPlanRepository.findById(id);
     }
 
     @Override
@@ -38,8 +43,17 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     @Override
     public void deleteByIds(String trainerId, String memberId) {
         Optional<WorkoutPlan> workoutplan = workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
-        if(workoutplan.isPresent()) {
+        if (workoutplan.isPresent()) {
             workoutPlanRepository.delete(workoutplan.get());
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+    @Override
+    public void deleteById(String id) {
+        Optional<WorkoutPlan> workoutPlan = workoutPlanRepository.findById(id);
+        if(workoutPlan.isPresent()) {
+            workoutPlanRepository.delete(workoutPlan.get());
         } else {
             throw new NoSuchElementException();
         }

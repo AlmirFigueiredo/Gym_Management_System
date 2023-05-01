@@ -9,10 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
 
 @RestController
@@ -25,14 +29,22 @@ public class WorkoutPlanController {
     public ResponseEntity<List<WorkoutPlan>> getAllWorkoutPlans() {
         return new ResponseEntity<List<WorkoutPlan>>(workoutPlanService.allWorkoutPlans(), HttpStatus.OK);
     }
-    @GetMapping("/{memberId}/{trainerId}")
-    public ResponseEntity<Optional<WorkoutPlan>> getWorkoutByIds(@PathVariable String memberId, @PathVariable String trainerId) {
-        return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanByIds(trainerId, memberId), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<WorkoutPlan>> getWorkoutByIds(@PathVariable String id) {
+        return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanById(id), HttpStatus.OK);
     }
-   
-    @DeleteMapping("/{memberId}/{trainerId}")
-    public ResponseEntity<Void> deleteByIds(@PathVariable String memberId, @PathVariable String trainerId) {
-        workoutPlanService.deleteByIds(trainerId, memberId);
+    @PostMapping
+    public WorkoutPlan createWorkoutPlan(@RequestBody WorkoutPlanRequest workoutPlanRequest) {
+        String memberId = workoutPlanRequest.getMemberId();
+        String trainerId = workoutPlanRequest.getTrainerId();
+        String startDate = workoutPlanRequest.getStartDate();
+        String endDate = workoutPlanRequest.getEndDate();
+        List<DailyWorkout> dailyWorkouts = workoutPlanRequest.getDailyWorkouts();
+        return workoutPlanService.createWorkoutPlan(memberId, trainerId, startDate, endDate, dailyWorkouts);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteByIds(@PathVariable String id) {
+        workoutPlanService.deleteById(id);;
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

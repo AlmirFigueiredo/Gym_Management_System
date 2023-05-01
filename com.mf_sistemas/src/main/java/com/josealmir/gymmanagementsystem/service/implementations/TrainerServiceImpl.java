@@ -3,6 +3,9 @@ package com.josealmir.gymmanagementsystem.service.implementations;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +14,21 @@ import com.josealmir.gymmanagementsystem.repositories.TrainerRepository;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
 @Service
-public class TrainerServiceImpl implements TrainerService{
+public class TrainerServiceImpl implements TrainerService {
     @Autowired
     private TrainerRepository trainerRepository;
 
     @Override
-    public Trainer createTrainer(String speciality, Double salary, String certificationNumber, String fullName, 
-    String phoneNumber, String address, String email) {
-        int numberOfTrainers = allTrainers().size();
-        String trainerId = String.format("%03d", numberOfTrainers+1);
-        Trainer trainer = trainerRepository.insert(new Trainer(trainerId, speciality, salary, certificationNumber, fullName, 
-        phoneNumber, address, email));
-        return trainer;
+    public Trainer createTrainer(String speciality, Double salary, String certificationNumber, String fullName,
+            String phoneNumber, String address, String email) {
+        String trainerId = generateNextMemberId();
+        if (trainerId != null) {
+            Trainer trainer = trainerRepository.insert(new Trainer(trainerId, speciality, salary, certificationNumber, fullName, 
+            phoneNumber, address, email));
+            return trainer;
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     @Override
@@ -34,13 +40,27 @@ public class TrainerServiceImpl implements TrainerService{
     public Optional<Trainer> trainerById(String trainerId) {
         return trainerRepository.findByTrainerId(trainerId);
     }
+
     @Override
     public void deleteByTrainerId(String trainerId) {
         Optional<Trainer> trainer = trainerRepository.findByTrainerId(trainerId);
-        if(trainer.isPresent()) {
+        if (trainer.isPresent()) {
             trainerRepository.delete(trainer.get());
         } else {
             throw new NoSuchElementException();
         }
+    }
+
+    private String generateNextMemberId() {
+        List<Trainer> trainers = allTrainers();
+        Set<String> usedIds = trainers.stream().map(Trainer::getTrainerId).collect(Collectors.toSet());
+
+        for (int i = 1; i <= 9999; i++) {
+            String candidateId = String.format("%04d", i);
+            if (!usedIds.contains(candidateId)) {
+                return candidateId;
+            }
+        }
+        return null;
     }
 }
