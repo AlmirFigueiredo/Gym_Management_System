@@ -1,17 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const workoutPlanId = 1;
+    const urlParams = new URLSearchParams(window.location.search);
+    const workoutPlanId = urlParams.get('workoutPlanId');
     fetchWorkoutPlanDetails(workoutPlanId);
 });
 
-function fetchWorkoutPlanDetails(workoutPlanId) {
-    fetch('/WorkoutPlans/${workoutPlanId}')
-        .then(response => response.json())
-        .then(workoutPlan => {
-            displayWorkoutPlanDetails(workoutPlan);
-        })
-        .catch(error => {
-            console.error('Error fetching workout plan details:', error);
-        });
+async function fetchWorkoutPlanDetails(workoutPlanId) {
+    try {
+        const response = await fetch(`/WorkoutPlans/${workoutPlanId}`);
+        const workoutPlan = await response.json();
+        
+        const memberResponse = await fetch(`/Members/${workoutPlan.memberId}`);
+        const member = await memberResponse.json();
+        
+        const trainerResponse = await fetch(`/Trainers/${workoutPlan.trainerId}`);
+        const trainer = await trainerResponse.json();
+        
+        displayWorkoutPlanDetails({ ...workoutPlan, member, trainer });
+    } catch (error) {
+        console.error('Error fetching workout plan details:', error);
+    }
 }
 
 function displayWorkoutPlanDetails(workoutPlan) {
@@ -47,4 +54,3 @@ function displayWorkoutPlanDetails(workoutPlan) {
         });
     }
 }
-
