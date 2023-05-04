@@ -12,22 +12,6 @@ function fetchTrainers() {
             console.error('Error fetching trainers: ', error);
         });
 }
-async function deleteTrainer(trainerId) {
-    try {
-        const response = await fetch(`/Trainers/${trainerId}`, {
-            method: 'DELETE',
-        });
-        if(response.ok) {
-            console.log(`Trainer with ID ${trainerId} deleted`);
-            fetchTrainers();
-        } else {
-            console.error(`Failed to delete the Trainer with ID ${trainerId}`, error);
-        }
-    } catch (error) {
-        console.error(`Failed to delete the Trainer with ID ${trainerId}`, error);
-    }
-}
-
 function displayTrainers(trainers) {
     const trainerTableBody = document.querySelector('#trainerTable tbody');
     trainerTableBody.innerHTML = '';
@@ -49,15 +33,6 @@ function displayTrainers(trainers) {
         const trainerCertificationNumberCell = document.createElement('td');
         trainerCertificationNumberCell.textContent = trainer.certificationNumber;
         row.appendChild(trainerCertificationNumberCell);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.className = 'delete-btn';
-        deleteButton.onclick = () => deleteTrainer(trainer.trainerId);
-
-        const deleteCell = document.createElement('td');
-        deleteCell.appendChild(deleteButton);
-        row.appendChild(deleteCell);
 
         trainerTableBody.appendChild(row);
     })
