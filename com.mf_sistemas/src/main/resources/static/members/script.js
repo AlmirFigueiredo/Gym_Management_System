@@ -39,6 +39,7 @@ function displayMembers(members) {
         endDate.textContent = member.endDate;
         row.appendChild(endDate);
 
+        row.classList.add('table-row-button');
         row.addEventListener('click', () => {
             window.location.href = `/member_details/member_details.html?memberId=${member.memberId}`;
         });
