@@ -34,6 +34,10 @@ function displayTrainers(trainers) {
         trainerCertificationNumberCell.textContent = trainer.certificationNumber;
         row.appendChild(trainerCertificationNumberCell);
 
+        row.classList.add('table-row-button');
+        row.addEventListener('click', () => {
+            window.location.href = `/trainer_details/trainer_details.html?trainerId=${trainer.trainerId}`;
+        });
         trainerTableBody.appendChild(row);
     })
 }
