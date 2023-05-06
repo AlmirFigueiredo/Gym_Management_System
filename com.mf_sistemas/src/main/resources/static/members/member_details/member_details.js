@@ -30,10 +30,8 @@ function displayMemberDetails(member) {
     document.querySelector('#address').textContent = member.address;
     document.querySelector('#phoneNumber').textContent = member.phoneNumber;
 
-    const workoutPlanButton = document.createElement('li');
-    const workoutPlanLink = document.createElement('a');
-    workoutPlanLink.href = `../../workoutplans/plan_details/plan_details.html?workoutPlanId=${member.workoutPlan.id}`;
-    workoutPlanLink.textContent = 'View Workout Plan';
-    workoutPlanButton.appendChild(workoutPlanLink);
-    document.querySelector('#detailsList').appendChild(workoutPlanButton);
+    const workoutPlanButton = document.getElementById('workoutPlanButton');
+    workoutPlanButton.addEventListener('click', function () {
+        window.location.href = ``;
+    });
 }
