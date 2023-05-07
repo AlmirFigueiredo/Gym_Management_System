@@ -1,105 +1,109 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #032329;
-    color: #2c3e50;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
-  
-  .sidebar {
-    width: 120px;
-    background-color: #2c3e50;
-    color: white;
-    padding: 32px;
-  }
-  
-  .sidebar h1 {
-    margin-top: 0;
-    margin-bottom: 32px;
-    font-size: 36px;
-    text-align: center;
-  }
-  
-  .sidebar nav {
-    margin-bottom: 32px;
-  }
-  
-  .sidebar .menu {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar .menu li a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #f2f5f5;
-    transition: background-color 0.2s ease-in-out;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .sidebar .menu li a:hover {
-    background-color: #0c7a97;
-  }
-  
-  .sidebar .menu-item {
-    position: relative;
-  }
-  
-  .sidebar .menu-item a::after {
-    font-size: 12px;
-    margin-left: 8px;
-  }
-  
-  .sidebar .sub-menu {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    background-color: #f8f8f8;
-    min-width: 100%;
-    list-style-type: none;
-    padding: 0;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  .sidebar .sub-menu li a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #333;
-    text-align: center;
-  }
-  
-  .sidebar .sub-menu li a:hover {
-    background-color: #ddd;
-  }
-  
-  .sidebar .menu-item:hover .sub-menu {
-    display: block;
-  }
-  
-  .sidebar .menu-item.has-arrow a::after {
-    content: '▼';
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #032329;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
 
-  .main {
-    flex-grow: 1;
-    padding: 15px;
-    background-color: white;
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 120px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 32px;
+}
+
+.sidebar h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.sidebar nav {
+  margin-bottom: 32px;
+}
+
+.sidebar .menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar .menu li a {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: #f2f5f5;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 16px;
+  text-align: center;
+}
+
+.sidebar .menu li a:hover {
+  background-color: #0c7a97;
+}
+
+.sidebar .menu-item {
+  position: relative;
+}
+
+.sidebar .menu-item a::after {
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.sidebar .sub-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #f8f8f8;
+  min-width: 100%;
+  list-style-type: none;
+  padding: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .sub-menu li a {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+
+.sidebar .sub-menu li a:hover {
+  background-color: #ddd;
+}
+
+.sidebar .menu-item:hover .sub-menu {
+  display: block;
+}
+
+.sidebar .menu-item.has-arrow a::after {
+  content: '▼';
+}
+
+
+.main {
+  flex-grow: 1;
+  padding: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header {
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-align: center;
+  font-size: 24px;
+  margin-bottom: 0px;
+  text-align: center;
 }
 
 .member-details-grid {
@@ -138,4 +142,24 @@ header {
 
 .date-box .details-box {
   width: 45%;
+}
+
+#workoutPlanButton {
+  background-color: #0B6E81;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px 2px;
+  margin-top: 15px; 
+  transition-duration: 0.4s;
+}
+#workoutPlanButton:hover {
+  background-color: #0c7a97;
+  color: white;
 }
