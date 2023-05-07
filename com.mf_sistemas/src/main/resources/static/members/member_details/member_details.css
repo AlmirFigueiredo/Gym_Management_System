@@ -90,7 +90,7 @@ body {
   }
   
 
-.main {
+  .main {
     flex-grow: 1;
     padding: 15px;
     background-color: white;
@@ -99,37 +99,43 @@ body {
 header {
     font-size: 24px;
     margin-bottom: 15px;
-}
-
-#memberDetails {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-#memberDetails p {
-    margin-bottom: 10px;
-}
-
-#memberDetails p strong {
-    font-weight: bold;
-}
-
-#workoutPlanButton {
-    background-color: #0B6E81;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 5px 2px;
-    transition-duration: 0.4s;
 }
 
-#workoutPlanButton:hover {
-    background-color: #0B6E81;
-    color: white;
+.member-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.details-box {
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 80%;
+}
+
+.details-box h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.details-box p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.date-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-box .details-box {
+  width: 45%;
 }
