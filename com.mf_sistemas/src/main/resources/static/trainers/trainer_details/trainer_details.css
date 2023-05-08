@@ -88,25 +88,22 @@ body {
 .sidebar .menu-item.has-arrow a::after {
     content: '▼';
 }
-
-
 .main {
     flex-grow: 1;
-    padding: 15px;
+    padding: 5px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-
 header {
     font-size: 24px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
-.member-details-grid {
+.trainer-details-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -142,25 +139,4 @@ header {
 
 .date-box .details-box {
     width: 45%;
-}
-
-#workoutPlanButton {
-    background-color: #0B6E81;
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 5px 2px;
-    margin-top: 15px;
-    transition-duration: 0.4s;
-}
-
-#workoutPlanButton:hover {
-    background-color: #0c7a97;
-    color: white;
 }
