@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         window.location.href = '../index.html';
     }
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', function () {
+        deleteMember(memberId);
+    });
 });
 
 function fetchMemberDetails(memberId) {
@@ -34,4 +38,23 @@ function displayMemberDetails(member) {
     workoutPlanButton.addEventListener('click', function () {
         window.location.href = ``;
     });
+}
+function deleteMember(memberId) {
+    const confirmation = confirm("Do you want to delete this member?");
+    if (confirmation) {
+        fetch(`/Members/${memberId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Member deleted successfully');
+                    window.location.href = '../index.html';
+                } else {
+                    alert('Error deleting member');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting member:', error);
+            });
+    }
 }
