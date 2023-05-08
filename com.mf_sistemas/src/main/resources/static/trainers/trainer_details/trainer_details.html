@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members' page</title>
+    <link rel="stylesheet" href="trainer_details.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <header>
+                <h1>GYM</h1>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="../../">Home</a></li>
+                    <li class="menu-item">
+                        <a href="#">Members</a>
+                        <ul class="sub-menu">
+                            <li><a href="../../members/index.html">All Members</a></li>
+                            <li><a href="../../members/add_member/add_member.html">Add New Member</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Trainers</a>
+                        <ul class="sub-menu">
+                            <li><a href="../index.html">All Trainers</a></li>
+                            <li><a href="../add_trainer/add_trainer.html">Add New Trainer</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">WorkoutPlans</a>
+                        <ul class="sub-menu">
+                            <li><a href="../../workoutplans/index.html">All WorkoutPlans</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <header>
+                <h1>Trainer Details</h1>
+            </header>
+            <div class="trainer-details-grid">
+                <div class="details-box">
+                    <h3>Trainer ID</h3>
+                    <p id="trainerId"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Full Name</h3>
+                    <p id="fullName"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Email</h3>
+                    <p id="email"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Phone Number</h3>
+                    <p id="phoneNumber"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Speciality</h3>
+                    <p id="speciality"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Salary</h3>
+                    <p id="salary"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Address</h3>
+                    <p id="address"></p>
+                </div>
+                <div class="details-box">
+                    <h3>Certification Number</h3>
+                    <p id="certificationNumber"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="trainer_details.js"></script>
+</body>
+</html>
