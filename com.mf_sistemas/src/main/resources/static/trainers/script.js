@@ -36,7 +36,7 @@ function displayTrainers(trainers) {
 
         row.classList.add('table-row-button');
         row.addEventListener('click', () => {
-            window.location.href = `/trainer_details/trainer_details.html?trainerId=${trainer.trainerId}`;
+            window.location.href = `trainer_details/trainer_details.html?trainerId=${trainer.trainerId}`;
         });
         trainerTableBody.appendChild(row);
     })
