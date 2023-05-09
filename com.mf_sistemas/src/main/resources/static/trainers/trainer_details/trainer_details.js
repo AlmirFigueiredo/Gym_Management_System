@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         window.location.href = '../index.html';
     }
+    
 });
 
 function fetchTrainerDetails(trainerId) {

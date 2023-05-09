@@ -88,18 +88,19 @@ body {
 .sidebar .menu-item.has-arrow a::after {
     content: '▼';
 }
+
 .main {
     flex-grow: 1;
     padding: 5px;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
+
 header {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
     text-align: center;
 }
 
@@ -139,4 +140,18 @@ header {
 
 .date-box .details-box {
     width: 45%;
+}
+
+#deleteButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#deleteButton img {
+    height: 40px;
+    width: 40px;
 }
