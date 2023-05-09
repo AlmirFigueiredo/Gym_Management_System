@@ -26,12 +26,12 @@ public class ExerciseServiceImpl implements ExerciseService {
         return exerciseRepository.findAll();
     }
     @Override
-    public Optional<Exercise> exerciseByName(String id) {
-        return exerciseRepository.findExerciseById(id);
+    public Optional<Exercise> exerciseByName(String name) {
+        return exerciseRepository.findExerciseByName(name);
     }
     @Override
-    public void deleteExerciseByName(String id) {
-        Optional<Exercise> exercise = exerciseRepository.findExerciseById(id);
+    public void deleteExerciseByName(String name) {
+        Optional<Exercise> exercise = exerciseRepository.findExerciseByName(name);
         if(exercise.isPresent()) {
             exerciseRepository.delete(exercise.get());
         } else {

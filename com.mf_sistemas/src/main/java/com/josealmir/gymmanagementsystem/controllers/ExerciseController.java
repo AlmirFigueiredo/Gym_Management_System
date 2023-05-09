@@ -37,11 +37,11 @@ public class ExerciseController {
         return new ResponseEntity<List<Exercise>>(exerciseService.allExercises(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{name}")
     public ResponseEntity<Optional<Exercise>> getExerciseByName(@PathVariable String name) {
         return new ResponseEntity<Optional<Exercise>>(exerciseService.exerciseByName(name), HttpStatus.OK);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{name}")
     public ResponseEntity<Void> deleteExercise(@PathVariable String name) {
         exerciseService.deleteExerciseByName(name);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
