@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         window.location.href = '../index.html';
     }
-    
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', function () {
+        deleteTrainer(trainerId);
+    });
 });
 
 function fetchTrainerDetails(trainerId) {
@@ -30,4 +33,23 @@ function displayTrainerDetails(trainer) {
     document.querySelector('#address').textContent = trainer.address;
     document.querySelector('#phoneNumber').textContent = trainer.phoneNumber;
     document.querySelector('#speciality').textContent = trainer.speciality;
+}
+function deleteTrainer(trainerId) {
+    const confirmation = confirm("Do you want to delete this trainer?");
+    if(confirmation) {
+        fetch(`/Trainers/${trainerId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if(response.ok) {
+                    alert('Trainer deleted successfully');
+                    window.location.href = '../index.html';
+                } else {
+                    alert('Error deleting trainer:');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting trainer:', error);
+            });
+    }   
 }
