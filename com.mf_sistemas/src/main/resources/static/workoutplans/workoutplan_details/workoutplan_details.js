@@ -15,7 +15,9 @@ async function fetchWorkoutPlanDetails(workoutPlanId) {
                 const exerciseResponse = await fetch(`/Exercises/${dailyWorkout.exercises[j].id}`);
                 const exercise = await exerciseResponse.json();
 
-                dailyWorkout.exercises[j] = exercise;
+                if (exercise && exercise.name) {
+                    dailyWorkout.exercises[j] = exercise;
+                }
             }
 
             workoutPlan.dailyWorkouts[i] = dailyWorkout;
@@ -30,7 +32,6 @@ async function fetchWorkoutPlanDetails(workoutPlanId) {
     }
 }
 
-
 function displayWorkoutPlanDetails(workoutPlan) {
     if (!workoutPlan) {
         console.error('Workout plan object is undefined.');
@@ -42,7 +43,6 @@ function displayWorkoutPlanDetails(workoutPlan) {
     const trainerIdElement = document.querySelector('#trainerId');
     const startDateElement = document.querySelector('#startDate');
     const endDateElement = document.querySelector('#endDate');
-    const exercisesListElement = document.querySelector('#exercisesList');
 
     if (workoutPlan.member) {
         memberIdElement.textContent = workoutPlan.member.memberId || '';
@@ -56,11 +56,38 @@ function displayWorkoutPlanDetails(workoutPlan) {
     startDateElement.textContent = workoutPlan.startDate || '';
     endDateElement.textContent = workoutPlan.endDate || '';
 
-    if (workoutPlan.exercises) {
-        workoutPlan.exercises.forEach(exercise => {
-            const listItem = document.createElement('li');
-            listItem.textContent = exercise.name;
-            exercisesListElement.appendChild(listItem);
-        });
-    }
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    daysOfWeek.forEach(day => {
+        const dailyWorkoutsForDay = workoutPlan.dailyWorkouts.filter(dailyWorkout => dailyWorkout.dayOfWeek === day);
+
+        const dayTable = document.createElement('table');
+        const tableHeader = document.createElement('th');
+        tableHeader.textContent = day;
+        dayTable.appendChild(tableHeader);
+
+        if (dailyWorkoutsForDay.length === 0) {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = 'No workout available';
+            row.appendChild(cell);
+            dayTable.appendChild(row);
+        } else {
+            dailyWorkoutsForDay.forEach(dailyWorkout => {
+                if (dailyWorkout.exercises) {
+                    dailyWorkout.exercises.forEach(exercise => {
+                        if (exercise && exercise.name) {
+                            const row = document.createElement('tr');
+                            const cell = document.createElement('td');
+                            cell.textContent = `${exercise.name} - Sets: ${exercise.quantitySets}, Reps: ${exercise.quantityReps}`;
+                            row.appendChild(cell);
+                            dayTable.appendChild(row);
+                        }
+                    });
+                }
+            });
+        }
+        document.body.appendChild(dayTable);
+    });
 }
+
