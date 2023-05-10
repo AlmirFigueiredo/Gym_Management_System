@@ -57,14 +57,22 @@ function displayWorkoutPlanDetails(workoutPlan) {
     endDateElement.textContent = workoutPlan.endDate || '';
 
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const rowIds = ['row1', 'row2', 'row3'];
+    let currentRow = 0;
 
-    daysOfWeek.forEach(day => {
+    daysOfWeek.forEach((day, index) => {
         const dailyWorkoutsForDay = workoutPlan.dailyWorkouts.filter(dailyWorkout => dailyWorkout.dayOfWeek === day);
 
+        const dayTableWrapper = document.createElement('div');
+        dayTableWrapper.className = 'table-wrapper';
+
         const dayTable = document.createElement('table');
+        dayTable.className = 'styled-table';
+        const tableHeaderRow = document.createElement('tr');
         const tableHeader = document.createElement('th');
         tableHeader.textContent = day;
-        dayTable.appendChild(tableHeader);
+        tableHeaderRow.appendChild(tableHeader);
+        dayTable.appendChild(tableHeaderRow);
 
         if (dailyWorkoutsForDay.length === 0) {
             const row = document.createElement('tr');
@@ -87,7 +95,14 @@ function displayWorkoutPlanDetails(workoutPlan) {
                 }
             });
         }
-        document.body.appendChild(dayTable);
+
+        dayTableWrapper.appendChild(dayTable);
+
+        if (index % 3 === 0 && index !== 0) {
+            currentRow++;
+        }
+
+        const rowElement = document.querySelector(`#${rowIds[currentRow]}`);
+        rowElement.appendChild(dayTableWrapper);
     });
 }
-
