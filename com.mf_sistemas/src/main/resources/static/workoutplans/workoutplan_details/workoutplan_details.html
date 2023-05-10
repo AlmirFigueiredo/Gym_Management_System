@@ -50,18 +50,32 @@
                 <h1>Workout Plan Details</h1>
             </header>
             <main>
-                <div id="workoutPlanDetails">
-                    <p><strong>Member ID:</strong> <span id="memberId"></span></p>
-                    <p><strong>Member Name:</strong> <span id="memberName"></span></p>
-                    <p><strong>Trainer ID:</strong> <span id="trainerId"></span></p>
-                    <p><strong>Start Date:</strong> <span id="startDate"></span></p>
-                    <p><strong>End Date:</strong> <span id="endDate"></span></p>
-                    <p><strong>Exercises:</strong></p>
-                    <div id="workoutPlanTablesContainer">
-                        <div class="row" id="row1"></div>
-                        <div class="row" id="row2"></div>
-                        <div class="row" id="row3"></div>
+                <div class="details-grid">
+                    <div class="details-item">
+                        <p><strong>Member ID:</strong></p>
+                        <p id="memberId"></p>
                     </div>
+                    <div class="details-item">
+                        <p><strong>Member Name:</strong></p>
+                        <p id="memberName"></p>
+                    </div>
+                    <div class="details-item">
+                        <p><strong>Trainer ID:</strong></p>
+                        <p id="trainerId"></p>
+                    </div>
+                    <div class="details-item">
+                        <p><strong>Start Date:</strong></p>
+                        <p id="startDate"></p>
+                    </div>
+                    <div class="details-item">
+                        <p><strong>End Date:</strong></p>
+                        <p id="endDate"></p>
+                    </div>
+                </div>
+                <div id="exercisesGrid">
+                    <div id="row1" class="row"></div>
+                    <div id="row2" class="row"></div>
+                    <div id="row3" class="row"></div>
                 </div>
             </main>
         </div>
