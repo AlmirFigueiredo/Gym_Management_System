@@ -88,7 +88,9 @@ body {
 .sidebar .menu-item.has-arrow a::after {
     content: '▼';
 }
-
+header {
+    text-align: center;
+}
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -96,6 +98,7 @@ body {
     font-family: sans-serif;
     min-width: 560px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
 }
 
 .styled-table th,
@@ -138,10 +141,15 @@ body {
     flex-wrap: wrap;
 }
 .details-grid {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     margin-bottom: 20px;
+    margin-top: 150px;
 }
 
 .details-item {
