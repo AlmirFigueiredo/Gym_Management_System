@@ -36,7 +36,7 @@ function displayMemberDetails(member) {
 
     const workoutPlanButton = document.getElementById('workoutPlanButton');
     workoutPlanButton.addEventListener('click', function () {
-        window.location.href = ``;
+        window.location.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=00010001`;
     });
 }
 function deleteMember(memberId) {
