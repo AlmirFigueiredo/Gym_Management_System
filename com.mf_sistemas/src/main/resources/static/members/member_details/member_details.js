@@ -11,7 +11,37 @@ document.addEventListener('DOMContentLoaded', function () {
     deleteButton.addEventListener('click', function () {
         deleteMember(memberId);
     });
+    const workoutPlanButton = document.getElementById('workoutPlanButton');
+    workoutPlanButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        fetchTrainers(memberId);
+    });
 });
+function fetchTrainers(memberId) {
+    fetch(`/Trainers`)
+        .then(response => response.json())
+        .then(trainers => {
+            displayTrainers(memberId, trainers);
+        })
+        .catch(error => {
+            console.error('Error fetching trainer details:', error);
+        });
+}
+
+function displayTrainers(memberId, trainers) {
+    const trainerDropdown = document.getElementById('trainerDropdown');
+    trainerDropdown.innerHTML = '';
+    trainerDropdown.style.display = 'block';
+
+    trainers.forEach(trainer => {
+        const trainerElement = document.createElement('a');
+        trainerElement.textContent = `${trainer.name} (ID: ${trainer.trainerId})`;
+        trainerElement.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=${memberId}${trainer.trainerId}`;
+
+        trainerDropdown.appendChild(trainerElement);
+    });
+}
+
 
 function fetchMemberDetails(memberId) {
     fetch(`/Members/${memberId}`)
@@ -33,12 +63,8 @@ function displayMemberDetails(member) {
     document.querySelector('#email').textContent = member.email;
     document.querySelector('#address').textContent = member.address;
     document.querySelector('#phoneNumber').textContent = member.phoneNumber;
-
-    const workoutPlanButton = document.getElementById('workoutPlanButton');
-    workoutPlanButton.addEventListener('click', function () {
-        window.location.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=00010001`;
-    });
 }
+
 function deleteMember(memberId) {
     const confirmation = confirm("Do you want to delete this member?");
     if (confirmation) {
