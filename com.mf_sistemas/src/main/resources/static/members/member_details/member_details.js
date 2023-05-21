@@ -35,7 +35,7 @@ function displayTrainers(memberId, trainers) {
 
     trainers.forEach(trainer => {
         const trainerElement = document.createElement('a');
-        trainerElement.textContent = `${trainer.name} (ID: ${trainer.trainerId})`;
+        trainerElement.textContent = `${trainer.fullName} (ID: ${trainer.trainerId})`;
         trainerElement.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=${memberId}${trainer.trainerId}`;
 
         trainerDropdown.appendChild(trainerElement);
