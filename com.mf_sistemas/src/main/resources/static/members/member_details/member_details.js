@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         fetchTrainers(memberId);
     });
+    document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('trainerModal').style.display = 'none';
+    });
 });
 function fetchTrainers(memberId) {
     fetch(`/Trainers`)
@@ -29,19 +32,20 @@ function fetchTrainers(memberId) {
 }
 
 function displayTrainers(memberId, trainers) {
-    const trainerDropdown = document.getElementById('trainerDropdown');
-    trainerDropdown.innerHTML = '';
-    trainerDropdown.style.display = 'block';
-
+    const trainersList = document.getElementById('trainersList');
+    trainersList.innerHTML = '';
     trainers.forEach(trainer => {
-        const trainerElement = document.createElement('a');
-        trainerElement.textContent = `${trainer.fullName} (ID: ${trainer.trainerId})`;
-        trainerElement.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=${memberId}${trainer.trainerId}`;
-
-        trainerDropdown.appendChild(trainerElement);
+        const trainerBox = document.createElement('div');
+        trainerBox.className = 'trainer-box';
+        trainerBox.textContent = `${trainer.fullName} (ID: ${trainer.trainerId})`;
+        trainerBox.onclick = () => {
+            window.location.href = `../../workoutplans/workoutplan_details/workoutplan_details.html?workoutPlanId=${memberId}${trainer.trainerId}`;
+        };
+        trainersList.appendChild(trainerBox);
     });
+    const trainerModal = document.getElementById('trainerModal');
+    trainerModal.style.display = 'block';
 }
-
 
 function fetchMemberDetails(memberId) {
     fetch(`/Members/${memberId}`)
