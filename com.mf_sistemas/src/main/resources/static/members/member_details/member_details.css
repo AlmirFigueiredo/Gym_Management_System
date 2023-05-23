@@ -214,10 +214,12 @@ header {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 30%;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
+  text-align: center;
+  align-items: center;
 }
 
 .close {
@@ -236,7 +238,11 @@ header {
 
 .trainer-box {
   border: 1px solid #aaa;
+  max-width: 250px;
   padding: 10px;
   margin: 10px 0;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
