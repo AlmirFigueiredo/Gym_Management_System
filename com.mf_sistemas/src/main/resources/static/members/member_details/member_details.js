@@ -7,19 +7,28 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         window.location.href = '../index.html';
     }
+
     const deleteButton = document.getElementById('deleteButton');
     deleteButton.addEventListener('click', function () {
         deleteMember(memberId);
     });
+
     const workoutPlanButton = document.getElementById('workoutPlanButton');
     workoutPlanButton.addEventListener('click', function (event) {
         event.preventDefault();
         fetchTrainers(memberId);
     });
+
+    const editButton = document.getElementById('editButton');
+    editButton.addEventListener('click', function () {
+        window.location.href = `../edit_member/edit_member.html?memberId=${memberId}`;
+    });
+
     document.querySelector('.close').addEventListener('click', () => {
         document.getElementById('trainerModal').style.display = 'none';
     });
 });
+
 function fetchTrainers(memberId) {
     fetch(`/Trainers`)
         .then(response => response.json())
