@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,10 @@ public class MemberController {
     @GetMapping("/{memberId}")
     public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String memberId) {
         return new ResponseEntity<Optional<Member>>(memberService.memberById(memberId), HttpStatus.OK);
+    }
+    @PutMapping("/{memberId}")
+    public Member updateMember(@PathVariable String memberId, @RequestBody MemberRequest memberRequest) {
+        return memberService.updateMember(memberId, memberRequest);
     }
     @DeleteMapping("/{memberId}")
     public ResponseEntity<Void> deleteMember(@PathVariable String memberId) {
