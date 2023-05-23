@@ -9,7 +9,6 @@ public interface TrainerService {
     String phoneNumber, String address, String email);
     List<Trainer> allTrainers();
     Optional<Trainer> trainerById(String trainerId);
-    Trainer updateTrainer(String trainerId, Double salary, String certificationNumber, String fullName,
-    String phoneNumber, String address, String email);
+    Trainer updateTrainer(String trainerId, Trainer trainerRequest);
     void deleteByTrainerId(String trainerId);
 }

@@ -40,7 +40,24 @@ public class TrainerServiceImpl implements TrainerService {
     public Optional<Trainer> trainerById(String trainerId) {
         return trainerRepository.findByTrainerId(trainerId);
     }
-
+    @Override
+    public Trainer updateTrainer(String trainerId, Trainer trainerRequest) {
+        Optional<Trainer> optionalTrainer = trainerRepository.findByTrainerId(trainerId);
+        if (optionalTrainer.isPresent()) {
+            Trainer trainer = optionalTrainer.get();
+            trainer.setSpeciality(trainerRequest.getSpeciality());
+            trainer.setSalary(trainerRequest.getSalary());
+            trainer.setCertificationNumber(trainerRequest.getCertificationNumber());
+            trainer.setFullName(trainerRequest.getFullName());
+            trainer.setPhoneNumber(trainerRequest.getPhoneNumber());
+            trainer.setAddress(trainerRequest.getAddress());
+            trainer.setEmail(trainerRequest.getEmail());
+            return trainerRepository.save(trainer);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+        
     @Override
     public void deleteByTrainerId(String trainerId) {
         Optional<Trainer> trainer = trainerRepository.findByTrainerId(trainerId);
