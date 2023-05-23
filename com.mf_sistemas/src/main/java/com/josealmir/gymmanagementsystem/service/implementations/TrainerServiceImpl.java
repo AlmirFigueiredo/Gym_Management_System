@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.josealmir.gymmanagementsystem.model.person.Trainer;
 import com.josealmir.gymmanagementsystem.repositories.TrainerRepository;
+import com.josealmir.gymmanagementsystem.requests.TrainerRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
 
 @Service
@@ -41,7 +42,7 @@ public class TrainerServiceImpl implements TrainerService {
         return trainerRepository.findByTrainerId(trainerId);
     }
     @Override
-    public Trainer updateTrainer(String trainerId, Trainer trainerRequest) {
+    public Trainer updateTrainer(String trainerId, TrainerRequest trainerRequest) {
         Optional<Trainer> optionalTrainer = trainerRepository.findByTrainerId(trainerId);
         if (optionalTrainer.isPresent()) {
             Trainer trainer = optionalTrainer.get();
