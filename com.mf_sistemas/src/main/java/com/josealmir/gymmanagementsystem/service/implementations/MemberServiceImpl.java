@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.person.Member;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.repositories.MemberRepository;
+import com.josealmir.gymmanagementsystem.requests.MemberRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
 
 @Service
@@ -37,21 +38,21 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findByMemberId(memberId);
     }
     @Override
-    public Member updateByMemberId(String memberId, Member updatedMember) {
-        Optional<Member> member = memberRepository.findByMemberId(memberId);
-        if(!member.isPresent()) {
+    public Member updateMember(String memberId, MemberRequest memberRequest) {
+        Optional<Member> optionalMember = memberRepository.findByMemberId(memberId);
+        if(optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            member.setAddress(memberRequest.getAddress());
+            member.setEmail(memberRequest.getEmail());
+            member.setEndDate(memberRequest.getEndDate());
+            member.setFullName(memberRequest.getFullName());
+            member.setMemberShipType(memberRequest.getMemberShipType());
+            member.setPhoneNumber(memberRequest.getPhoneNumber());
+            member.setStartDate(memberRequest.getStartDate());
+            return memberRepository.save(member);
+        }else {
             throw new NoSuchElementException();
         }
-        Member currentMember = member.get();
-        currentMember.setAddress(updatedMember.getAddress());
-        currentMember.setEmail(updatedMember.getEmail());
-        currentMember.setFullName(updatedMember.getFullName());
-        currentMember.setMemberShipType(updatedMember.getMemberShipType());
-        currentMember.setPhoneNumber(updatedMember.getPhoneNumber());
-        currentMember.setStartDate(updatedMember.getStartDate());
-        currentMember.setEndDate(updatedMember.getEndDate());
-        currentMember.setWorkoutPlan(updatedMember.getWorkoutPlan());
-        return memberRepository.save(currentMember);
     }
 
     @Override

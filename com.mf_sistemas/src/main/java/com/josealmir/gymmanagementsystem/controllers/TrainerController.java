@@ -54,5 +54,4 @@ public class TrainerController {
         trainerService.deleteByTrainerId(trainerId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
 }
