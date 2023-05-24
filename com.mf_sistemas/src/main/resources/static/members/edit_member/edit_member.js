@@ -62,7 +62,9 @@ function submitForm(event) {
         address: address,
         phoneNumber: phoneNumber
     }
-    updateMember(newMember);
+    updateMember(newMember).then(() => {
+        window.location.href = '../index.html'
+    });
     event.target.reset();
 }
 
