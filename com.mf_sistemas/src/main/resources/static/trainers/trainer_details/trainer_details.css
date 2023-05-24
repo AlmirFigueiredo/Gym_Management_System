@@ -142,16 +142,34 @@ header {
     width: 45%;
 }
 
-#deleteButton {
+#buttonContainer {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 65px;
 }
 
-#deleteButton img {
-    height: 40px;
-    width: 40px;
+#editButton {
+    background-color: #0B6E81;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    width: 60px;
+    align-content: center;
+    border-radius: 25px;
+}
+
+#deleteButton {
+    background-color: rgb(154, 13, 13);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: inline-flex;
+    border-radius: 25px;
 }
