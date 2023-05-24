@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     deleteButton.addEventListener('click', function () {
         deleteTrainer(trainerId);
     });
+    const editButton = document.getElementById('editButton');
+    editButton.addEventListener('click', function () {
+        window.location.href = `../edit_trainer/edit_trainer.html?trainerId=${trainerId}`;
+    });
 });
 
 function fetchTrainerDetails(trainerId) {
