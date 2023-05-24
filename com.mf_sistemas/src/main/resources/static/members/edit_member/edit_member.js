@@ -11,7 +11,6 @@ async function fetchMemberDetails(memberId) {
 }
 
 function displayMemberDetails(member) {
-    document.getElementById('memberId').value = member.id;
     document.getElementById('fullName').value = member.fullName;
     document.getElementById('memberShipType').value = member.memberShipType;
     document.getElementById('startDate').value = member.startDate;
@@ -21,7 +20,9 @@ function displayMemberDetails(member) {
     document.getElementById('phoneNumber').value = member.phoneNumber;
 }
 
-async function updateMember(memberId, memberInfo) {
+async function updateMember(memberInfo) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberId = urlParams.get('memberId');
     try {
         const response = await fetch(`/Members/${memberId}`, {
             method: 'PUT',
@@ -40,10 +41,10 @@ async function updateMember(memberId, memberInfo) {
     }
 }
 
+
 function submitForm(event) {
     event.preventDefault();
 
-    const memberId = document.getElementById('memberId').value;
     const fullName = document.getElementById('fullName').value;
     const memberShipType = document.getElementById('memberShipType').value;
     const startDate = document.getElementById('startDate').value;
@@ -52,7 +53,7 @@ function submitForm(event) {
     const address = document.getElementById('address').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
 
-    const updatedMember = {
+    const newMember = {
         fullName: fullName,
         memberShipType: memberShipType,
         startDate: startDate,
@@ -60,9 +61,9 @@ function submitForm(event) {
         email: email,
         address: address,
         phoneNumber: phoneNumber
-    };
-    
-    updateMember(memberId, updatedMember);
+    }
+    updateMember(newMember);
+    event.target.reset();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
