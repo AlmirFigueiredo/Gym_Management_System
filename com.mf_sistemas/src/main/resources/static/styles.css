@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: whitesmoke;
   color: #2c3e50;
   margin: 0;
@@ -21,7 +21,7 @@ body {
 .sidebar h1 {
   margin-top: 0;
   margin-bottom: 32px;
-  font-size: 34px;
+  font-size: 37px;
   text-align: center;
 }
 
@@ -40,7 +40,7 @@ body {
   text-decoration: none;
   color: #f2f5f5;
   transition: background-color 0.2s ease-in-out, padding 0.2s ease-in-out, font-size 0.2s ease-in-out;
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
   border-radius: 10px;
 }
@@ -48,7 +48,7 @@ body {
 .sidebar .menu li a:hover {
   background-color: rgb(58, 58, 58);
   padding: 16px 8px;
-  font-size: 16px;
+  font-size: 19px;
 }
 
 
@@ -57,7 +57,7 @@ body {
 }
 
 .sidebar .menu-item a::after {
-  font-size: 10px;
+  font-size: 13px;
   margin-left: 8px;
 }
 
@@ -105,6 +105,7 @@ body {
   font-size: 36px;
   text-align: center;
 }
+
 .background-image {
   position: fixed;
   top: 0;
