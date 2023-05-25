@@ -96,8 +96,9 @@ body {
 
 .main {
   flex: 1;
-  background-color: black;
+  background-color: white;
   margin-left: 0;
+  text-align: center;
 }
 
 .main h1 {
@@ -108,9 +109,9 @@ body {
 }
 
 .banner-image {
-  width: 100%;
+  width: 50%;
   height: 30%;
-  display: block;
+  margin: auto;
 }
 
 .table-container {
