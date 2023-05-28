@@ -108,13 +108,13 @@ header {
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: black;
     color: #ffffff;
     text-align: left;
 }
 
 .styled-table th {
-    background-color: #0c7a97;
+    background-color: black;
     color: #ffffff;
     text-align: center;
 }
@@ -124,7 +124,7 @@ header {
 }
 
 .styled-table tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: white;
 }
 
 .styled-table tr:last-of-type {
