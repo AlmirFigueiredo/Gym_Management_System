@@ -144,7 +144,7 @@ header {
 }
 
 #workoutPlanButton {
-  background-color: #0B6E81;
+  background-color: black;
   border: none;
   border-radius: 25px;
   color: #fff;
@@ -160,7 +160,7 @@ header {
 }
 
 #workoutPlanButton:hover {
-  background-color: #0c7a97;
+  background-color: black;
   color: white;
 }
 
@@ -258,7 +258,7 @@ header {
 }
 
 #editButton {
-  background-color: #0B6E81;
+  background-color: black;
   color: white;
   border: none;
   cursor: pointer;
