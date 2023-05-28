@@ -42,7 +42,7 @@ body {
   color: #f2f5f5;
   transition: background-color 0.2s ease-in-out, padding 0.2s ease-in-out, font-size 0.2s ease-in-out;
   font-size: 17px;
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
 }
 
@@ -107,8 +107,6 @@ body {
   font-size: 36px;
   text-align: center;
 }
-
-
 
 .table-container {
   border: 1px solid #817b7b;
