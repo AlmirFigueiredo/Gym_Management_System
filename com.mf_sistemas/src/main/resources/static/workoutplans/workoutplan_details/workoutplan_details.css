@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: white;
+    font-family: 'Lato', sans-serif;
+    background-color: whitesmoke;
     color: #2c3e50;
     margin: 0;
     padding: 0;
@@ -13,16 +13,16 @@ body {
 
 .sidebar {
     width: 120px;
-    background-color: #2c3e50;
+    background-color: black;
     color: white;
     padding: 32px;
+    border-right: 1px solid white;
 }
 
 .sidebar h1 {
-    margin-top: 0;
-    margin-bottom: 32px;
-    font-size: 36px;
-    text-align: center;
+    margin: 0 0 32px 0;
+    font-size: 37px;
+    text-align: left;
 }
 
 .sidebar nav {
@@ -37,15 +37,18 @@ body {
 .sidebar .menu li a {
     display: block;
     padding: 16px;
+    padding-left: 0px;
     text-decoration: none;
     color: #f2f5f5;
-    transition: background-color 0.2s ease-in-out;
-    font-size: 16px;
-    text-align: center;
+    transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    font-size: 17px;
+    text-align: left;
+    border-radius: 10px;
 }
 
 .sidebar .menu li a:hover {
-    background-color: #0c7a97;
+    color: #ddd;
+    font-size: 19px;
 }
 
 .sidebar .menu-item {
@@ -53,7 +56,7 @@ body {
 }
 
 .sidebar .menu-item a::after {
-    font-size: 12px;
+    font-size: 13px;
     margin-left: 8px;
 }
 
@@ -62,7 +65,7 @@ body {
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #f8f8f8;
+    background-color: black;
     min-width: 100%;
     list-style-type: none;
     padding: 0;
@@ -73,12 +76,8 @@ body {
     display: block;
     padding: 16px;
     text-decoration: none;
-    color: #333;
+    color: white;
     text-align: center;
-}
-
-.sidebar .sub-menu li a:hover {
-    background-color: #ddd;
 }
 
 .sidebar .menu-item:hover .sub-menu {
@@ -88,9 +87,11 @@ body {
 .sidebar .menu-item.has-arrow a::after {
     content: '▼';
 }
+
 header {
     text-align: center;
 }
+
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -140,6 +141,7 @@ header {
     display: flex;
     flex-wrap: wrap;
 }
+
 .details-grid {
     display: flex;
     flex-direction: row;
@@ -156,5 +158,5 @@ header {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
