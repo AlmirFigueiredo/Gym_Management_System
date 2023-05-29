@@ -51,7 +51,7 @@ public class ExerciseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExercise(@PathVariable String id) {
-        exerciseService.exerciseById(id);
+        exerciseService.deleteExerciseById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
