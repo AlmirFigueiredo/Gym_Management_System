@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
+import com.josealmir.gymmanagementsystem.requests.ExerciseRequest;
 
 public interface ExerciseService {
     Exercise createExercise(String name, Integer quantitySets, Integer quantityReps, Integer resTimeSeconds);
     List<Exercise> allExercises();
-    Optional<Exercise> exerciseByName(String name);
-    void deleteExerciseByName(String name);
+    Optional<Exercise> exerciseById(String id);
+    Exercise updateExercise(String id, ExerciseRequest exerciseRequest);
+    void deleteExerciseById(String id);
 }

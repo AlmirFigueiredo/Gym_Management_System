@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
 import com.josealmir.gymmanagementsystem.repositories.ExerciseRepository;
+import com.josealmir.gymmanagementsystem.requests.ExerciseRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.ExerciseService;
 
 @Service
@@ -26,12 +27,26 @@ public class ExerciseServiceImpl implements ExerciseService {
         return exerciseRepository.findAll();
     }
     @Override
-    public Optional<Exercise> exerciseByName(String name) {
-        return exerciseRepository.findExerciseByName(name);
+    public Optional<Exercise> exerciseById(String id) {
+        return exerciseRepository.findById(id);
     }
     @Override
-    public void deleteExerciseByName(String name) {
-        Optional<Exercise> exercise = exerciseRepository.findExerciseByName(name);
+    public Exercise updateExercise(String id, ExerciseRequest exerciseRequest) {
+        Optional<Exercise> optionalExercise = exerciseRepository.findById(id);
+        if(optionalExercise.isPresent()) {
+            Exercise exercise = optionalExercise.get();
+            exercise.setName(exerciseRequest.getName());
+            exercise.setQuantityReps(exerciseRequest.getQuantityReps());
+            exercise.setQuantitySets(exerciseRequest.getQuantitySets());
+            exercise.setResTimeSeconds(exerciseRequest.getResTimeSeconds());
+            return exerciseRepository.save(exercise);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+    @Override
+    public void deleteExerciseById(String id) {
+        Optional<Exercise> exercise = exerciseRepository.findById(id);
         if(exercise.isPresent()) {
             exerciseRepository.delete(exercise.get());
         } else {

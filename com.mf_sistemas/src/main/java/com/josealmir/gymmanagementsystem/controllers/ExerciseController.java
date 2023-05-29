@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,11 @@ public class ExerciseController {
     @Autowired
     private ExerciseService exerciseService;
 
+    @GetMapping()
+    public ResponseEntity<List<Exercise>> getAllExercises() {
+        return new ResponseEntity<List<Exercise>>(exerciseService.allExercises(), HttpStatus.OK);
+    }
+
     @PostMapping()
     public Exercise createExercise(@RequestBody ExerciseRequest exerciseRequest) {
         String name = exerciseRequest.getName();
@@ -32,18 +38,20 @@ public class ExerciseController {
         Integer resTimeSeconds = exerciseRequest.getResTimeSeconds();
         return exerciseService.createExercise(name, quantitySets, quantityReps, resTimeSeconds);
     }
-    @GetMapping()
-    public ResponseEntity<List<Exercise>> getAllExercises() {
-        return new ResponseEntity<List<Exercise>>(exerciseService.allExercises(), HttpStatus.OK);
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Exercise>> getExerciseById(@PathVariable String id) {
+        return new ResponseEntity<Optional<Exercise>>(exerciseService.exerciseByName(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<Optional<Exercise>> getExerciseByName(@PathVariable String name) {
-        return new ResponseEntity<Optional<Exercise>>(exerciseService.exerciseByName(name), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public Exercise updateExercise(@PathVariable String id, @RequestBody ExerciseRequest exerciseRequest) {
+        return exerciseService.updateExercise(id, exerciseRequest);
     }
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Void> deleteExercise(@PathVariable String name) {
-        exerciseService.deleteExerciseByName(name);
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteExercise(@PathVariable String id) {
+        exerciseService.exerciseByName(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
