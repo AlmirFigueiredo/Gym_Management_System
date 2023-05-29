@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
+import com.josealmir.gymmanagementsystem.requests.DailyWorkoutRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.DailyWorkoutService;
 
 @RestController
@@ -39,6 +41,11 @@ public class DailyWorkoutController {
         List<Exercise> exercises = dailyWorkout.getExercises();
         return dailyWorkoutService.createDailyWorkout(dayOfWeek, exercises);
     }
+    @PutMapping("/{id}")
+    public DailyWorkout updateDailyWorkout(@PathVariable String id, @RequestBody DailyWorkoutRequest dailyWorkoutRequest) {
+        return dailyWorkoutService.updateDailyWorkout(id, dailyWorkoutRequest);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDailyWorkout(@PathVariable String id) {
         dailyWorkoutService.deleteDailyWorkout(id);

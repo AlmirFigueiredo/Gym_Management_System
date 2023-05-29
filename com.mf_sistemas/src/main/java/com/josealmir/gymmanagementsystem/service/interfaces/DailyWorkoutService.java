@@ -5,10 +5,12 @@ import java.util.Optional;
 
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
+import com.josealmir.gymmanagementsystem.requests.DailyWorkoutRequest;
 
 public interface DailyWorkoutService {
     DailyWorkout createDailyWorkout(String dayOfWeek, List<Exercise> exercises);
     List<DailyWorkout> allDailyWorkouts();
     Optional<DailyWorkout> dailyWorkoutById(String id);
+    DailyWorkout updateDailyWorkout(String id, DailyWorkoutRequest dailyWorkoutRequest);
     void deleteDailyWorkout(String id);
 }

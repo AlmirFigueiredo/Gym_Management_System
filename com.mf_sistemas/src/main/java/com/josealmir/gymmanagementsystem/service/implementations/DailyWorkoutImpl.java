@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
 import com.josealmir.gymmanagementsystem.repositories.DailyWorkoutRepository;
+import com.josealmir.gymmanagementsystem.requests.DailyWorkoutRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.DailyWorkoutService;
 
 @Service
@@ -29,6 +30,18 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
     @Override
     public Optional<DailyWorkout> dailyWorkoutById(String id) {
         return dailyWorkoutRepository.findDailyWorkoutById(id);
+    }
+    @Override
+    public DailyWorkout updateDailyWorkout(String id, DailyWorkoutRequest dailyWorkoutRequest) {
+        Optional<DailyWorkout> optionalDailyWorkout = dailyWorkoutRepository.findDailyWorkoutById(id);
+        if(optionalDailyWorkout.isPresent()) {
+            DailyWorkout dailyWorkout = optionalDailyWorkout.get();
+            dailyWorkout.setDayOfWeek(dailyWorkoutRequest.getDayOfWeek());
+            dailyWorkout.setExercises(dailyWorkoutRequest.getExercises());
+            return dailyWorkoutRepository.save(dailyWorkout);
+        } else {
+            throw new NoSuchElementException();
+        }
     }
     @Override
     public void deleteDailyWorkout(String id) {
