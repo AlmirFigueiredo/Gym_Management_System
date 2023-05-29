@@ -41,7 +41,7 @@ public class ExerciseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Exercise>> getExerciseById(@PathVariable String id) {
-        return new ResponseEntity<Optional<Exercise>>(exerciseService.exerciseByName(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Exercise>>(exerciseService.exerciseById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
@@ -51,7 +51,7 @@ public class ExerciseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExercise(@PathVariable String id) {
-        exerciseService.exerciseByName(id);
+        exerciseService.exerciseById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
