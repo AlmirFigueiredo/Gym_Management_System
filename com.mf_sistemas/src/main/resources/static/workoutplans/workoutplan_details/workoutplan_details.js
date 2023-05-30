@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const workoutPlanId = urlParams.get('workoutPlanId');
     fetchWorkoutPlanDetails(workoutPlanId);
+
+    const editButton = document.getElementById('editButton');
+    editButton.addEventListener('click', function () {
+        window.location.href = `../edit_workoutplan.html?workoutPlanId=${workoutPlanId}`;
+    });
 });
 
 async function fetchWorkoutPlanDetails(workoutPlanId) {
