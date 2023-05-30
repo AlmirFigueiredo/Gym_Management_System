@@ -11,6 +11,7 @@ public interface DailyWorkoutService {
     DailyWorkout createDailyWorkout(String dayOfWeek, List<Exercise> exercises);
     List<DailyWorkout> allDailyWorkouts();
     Optional<DailyWorkout> dailyWorkoutById(String id);
+    Optional<DailyWorkout> dailyWorkoutByDayOfWeek(String dayOfWeek);
     DailyWorkout updateDailyWorkout(String id, DailyWorkoutRequest dailyWorkoutRequest);
     void deleteDailyWorkout(String id);
 }

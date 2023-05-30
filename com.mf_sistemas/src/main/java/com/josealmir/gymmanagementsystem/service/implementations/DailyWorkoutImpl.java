@@ -28,6 +28,10 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
         return dailyWorkoutRepository.findAll();
     }
     @Override
+    public Optional<DailyWorkout> dailyWorkoutByDayOfWeek(String dayOfWeek) {
+        return dailyWorkoutRepository.findDailyWorkoutByDayOfWeek(dayOfWeek);
+    }
+    @Override
     public Optional<DailyWorkout> dailyWorkoutById(String id) {
         return dailyWorkoutRepository.findDailyWorkoutById(id);
     }

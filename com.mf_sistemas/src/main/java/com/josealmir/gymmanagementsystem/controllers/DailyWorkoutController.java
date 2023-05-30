@@ -31,10 +31,13 @@ public class DailyWorkoutController {
         return new ResponseEntity<List<DailyWorkout>>(dailyWorkoutService.allDailyWorkouts(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<DailyWorkout>> getDailyWorkoutByDayOfWeek(@PathVariable String id) {
+    public ResponseEntity<Optional<DailyWorkout>> getDailyWorkoutById(@PathVariable String id) {
         return new ResponseEntity<Optional<DailyWorkout>>(dailyWorkoutService.dailyWorkoutById(id), HttpStatus.OK);
     }
-
+    @GetMapping("/day/{dayOfWeek}")
+    public ResponseEntity<Optional<DailyWorkout>> getDailyWorkoutByDayOfWeek(@PathVariable String dayOfWeek) {
+        return new ResponseEntity<Optional<DailyWorkout>>(dailyWorkoutService.dailyWorkoutByDayOfWeek(dayOfWeek), HttpStatus.OK);
+    }
     @PostMapping
     public DailyWorkout createDailyWorkoutPlan(@RequestBody DailyWorkout dailyWorkout) {
         String dayOfWeek = dailyWorkout.getDayOfWeek();
