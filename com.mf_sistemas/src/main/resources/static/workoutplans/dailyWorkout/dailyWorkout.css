@@ -1,0 +1,89 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: whitesmoke;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 120px;
+    background-color: black;
+    color: white;
+    padding: 32px;
+    border-right: 1px solid white;
+}
+
+.sidebar h1 {
+    margin: 0 0 32px 0;
+    font-size: 37px;
+    text-align: left;
+}
+
+.sidebar nav {
+    margin-bottom: 32px;
+}
+
+.sidebar .menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .menu li a {
+    display: block;
+    padding: 16px;
+    padding-left: 0px;
+    text-decoration: none;
+    color: #f2f5f5;
+    transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    font-size: 17px;
+    text-align: left;
+    border-radius: 10px;
+}
+
+.sidebar .menu li a:hover {
+    color: #ddd;
+    font-size: 19px;
+}
+
+.sidebar .menu-item {
+    position: relative;
+}
+
+.sidebar .menu-item a::after {
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+.sidebar .sub-menu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: black;
+    min-width: 100%;
+    list-style-type: none;
+    padding: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .sub-menu li a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.sidebar .menu-item:hover .sub-menu {
+    display: block;
+}
+
+.sidebar .menu-item.has-arrow a::after {
+    content: '▼';
+}
