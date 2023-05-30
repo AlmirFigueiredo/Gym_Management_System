@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const day = urlParams.get('day');
-    fetchDailyWorkout(day);
+    const currentDay = new Date().toLocaleString('en-us', { weekday: 'long' });
+    fetchDailyWorkout(currentDay);
 });
 
 async function fetchDailyWorkout(day) {
-    const response = await fetch(`/DailyWorkouts/${day}`);
+    const response = await fetch(`/DailyWorkouts/day/${day}`);
     if (!response.ok) {
         console.error(`There was an error fetching the workout: ${response.status}`);
         return;
@@ -17,7 +16,6 @@ async function fetchDailyWorkout(day) {
         console.log(`No workout found for day ${day}`);
     }
 }
-
 
 function displayDailyWorkout(dailyWorkout) {
     const tableBody = document.getElementById('workoutTableBody');
