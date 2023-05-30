@@ -6,38 +6,78 @@
 </head>
 
 <body>
-    <table id="workoutTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Sets</th>
-                <th>Reps</th>
-                <th>Rest Time</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="workoutTableBody">
-
-        </tbody>
-    </table>
-    <button id="addExerciseButton">Add Exercise</button>
-
-    <div id="modalBox" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="exerciseForm">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br>
-                <label for="quantitySets">Sets:</label><br>
-                <input type="number" id="quantitySets" name="quantitySets"><br>
-                <label for="quantityReps">Reps:</label><br>
-                <input type="number" id="quantityReps" name="quantityReps"><br>
-                <label for="resTimeSeconds">Rest Time:</label><br>
-                <input type="number" id="resTimeSeconds" name="resTimeSeconds"><br>
-                <button type="button" id="saveButton">Save</button>
-            </form>
+    <div class="container">
+        <div class="sidebar">
+            <header>
+                <h1>GYM</h1>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li class="menu-item">
+                        <a href="#">Members</a>
+                        <ul class="sub-menu">
+                            <li><a href="../../members/index.html">All Members</a></li>
+                            <li><a href="../../members/add_member/add_member.html">Add New Member</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Trainers</a>
+                        <ul class="sub-menu">
+                            <li><a href="../../trainers/index.html">Trainers</a></li>
+                            <li><a href="../../trainers/add_trainer/add_trainer.html">Add New Trainer</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">WorkoutPlans</a>
+                        <ul class="sub-menu">
+                            <li><a href="../index.html">WorkoutPlans</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
+    <div class="main">
+        <header>
+            <h1>Daily Workout Details</h1>
+        </header>
+    </div>
+    <main>
+        <table id="workoutTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Rest Time</th>
+                </tr>
+            </thead>
+            <tbody id="workoutTableBody">
+
+            </tbody>
+        </table>
+        <button id="addExerciseButton">Add Exercise</button>
+
+        <div id="modalBox" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="exerciseForm">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="quantitySets">Sets:</label><br>
+                    <input type="number" id="quantitySets" name="quantitySets"><br>
+                    <label for="quantityReps">Reps:</label><br>
+                    <input type="number" id="quantityReps" name="quantityReps"><br>
+                    <label for="resTimeSeconds">Rest Time:</label><br>
+                    <input type="number" id="resTimeSeconds" name="resTimeSeconds"><br>
+                    <button type="button" id="saveButton">Save</button>
+                </form>
+            </div>
+        </div>
+    </main>
     <script src="dailyWorkout.js"></script>
 </body>
 
