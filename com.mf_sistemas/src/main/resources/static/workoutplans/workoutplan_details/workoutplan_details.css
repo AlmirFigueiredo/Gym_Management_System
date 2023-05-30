@@ -192,3 +192,6 @@ header {
     display: inline-flex;
     border-radius: 25px;
 }
+.table-wrapper {
+    cursor: pointer;
+}

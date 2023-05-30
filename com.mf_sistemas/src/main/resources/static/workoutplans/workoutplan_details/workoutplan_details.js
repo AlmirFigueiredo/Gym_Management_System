@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     editButton.addEventListener('click', function () {
         window.location.href = `../edit_workoutplan.html?workoutPlanId=${workoutPlanId}`;
     });
-    
+
     const deleteButton = document.getElementById('deleteButton');
     deleteButton.addEventListener('click', function () {
         deleteWorkoutPlan()
@@ -77,6 +77,10 @@ function displayWorkoutPlanDetails(workoutPlan) {
         const dayTableWrapper = document.createElement('div');
         dayTableWrapper.className = 'table-wrapper';
 
+        dayTableWrapper.addEventListener('click', function () {
+            window.location.href = `../your_destination_page.html?day=${day}`;
+        });
+
         const dayTable = document.createElement('table');
         dayTable.className = 'styled-table';
         const tableHeaderRow = document.createElement('tr');
@@ -118,14 +122,15 @@ function displayWorkoutPlanDetails(workoutPlan) {
     });
 }
 
+
 function deleteWorkoutPlan(workoutPlanId) {
     const confirmation = confirm("Do you want to delete this Workout Plan?")
-    if(confirmation) {
+    if (confirmation) {
         fetch(`/WorkoutPlans/${workoutPlanId}`, {
             method: 'DELETE'
         })
             .then(response => {
-                if(response.ok) {
+                if (response.ok) {
                     alert('Workout Plan deleted successfully');
                     window.location.href = '../index.html';
                 } else {
