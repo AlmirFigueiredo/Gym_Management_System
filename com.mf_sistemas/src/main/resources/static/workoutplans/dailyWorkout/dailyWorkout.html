@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Daily Workout</title>
+</head>
+
+<body>
+    <table id="workoutTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Rest Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <button id="addExerciseButton">Add Exercise</button>
+
+    <div id="modalBox" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="exerciseForm">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="quantitySets">Sets:</label><br>
+                <input type="number" id="quantitySets" name="quantitySets"><br>
+                <label for="quantityReps">Reps:</label><br>
+                <input type="number" id="quantityReps" name="quantityReps"><br>
+                <label for="resTimeSeconds">Rest Time:</label><br>
+                <input type="number" id="resTimeSeconds" name="resTimeSeconds"><br>
+                <button type="button" id="saveButton">Save</button>
+            </form>
+        </div>
+    </div>
+    <script src="dailyWorkout.js"></script>
+</body>
+</html>
