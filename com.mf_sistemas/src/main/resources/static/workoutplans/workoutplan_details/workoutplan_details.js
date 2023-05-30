@@ -10,9 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const deleteButton = document.getElementById('deleteButton');
     deleteButton.addEventListener('click', function () {
-        deleteWorkoutPlan()
+        deleteWorkoutPlan(workoutPlanId);
     });
-
 });
 
 async function fetchWorkoutPlanDetails(workoutPlanId) {
@@ -44,11 +43,6 @@ async function fetchWorkoutPlanDetails(workoutPlanId) {
 }
 
 function displayWorkoutPlanDetails(workoutPlan) {
-    if (!workoutPlan) {
-        console.error('Workout plan object is undefined.');
-        return;
-    }
-
     const memberIdElement = document.querySelector('#memberId');
     const memberNameElement = document.querySelector('#memberName');
     const trainerIdElement = document.querySelector('#trainerId');
@@ -76,10 +70,7 @@ function displayWorkoutPlanDetails(workoutPlan) {
 
         const dayTableWrapper = document.createElement('div');
         dayTableWrapper.className = 'table-wrapper';
-
-        dayTableWrapper.addEventListener('click', function () {
-            window.location.href = `../your_destination_page.html?day=${day}`;
-        });
+        dayTableWrapper.style.cursor = 'pointer';
 
         const dayTable = document.createElement('table');
         dayTable.className = 'styled-table';
@@ -119,9 +110,12 @@ function displayWorkoutPlanDetails(workoutPlan) {
 
         const rowElement = document.querySelector(`#${rowIds[currentRow]}`);
         rowElement.appendChild(dayTableWrapper);
+
+        dayTableWrapper.addEventListener('click', function () {
+            window.location.href = `../dailyWorkout/dailyWorkout.html?day=${day}`;
+        });
     });
 }
-
 
 function deleteWorkoutPlan(workoutPlanId) {
     const confirmation = confirm("Do you want to delete this Workout Plan?")
