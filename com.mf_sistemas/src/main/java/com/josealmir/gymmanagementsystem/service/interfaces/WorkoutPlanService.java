@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 
 public interface WorkoutPlanService {
     WorkoutPlan createWorkoutPlan(String memberId, String trainerId, String startDate, String endDate, List<DailyWorkout> dailyWorkouts);
@@ -11,6 +12,7 @@ public interface WorkoutPlanService {
     Optional<WorkoutPlan> findWorkoutPlanByIds(String trainerId, String memberId);
     Optional<WorkoutPlan> findWorkoutPlanById(String id);
     List<WorkoutPlan> findWorkoutPlansByMemberId(String memberId);
+    WorkoutPlan updateWorkoutPlan(String id, WorkoutPlanRequest workoutPlanRequest);
     void deleteById(String id);
     void deleteByIds(String trainerId, String memberId);
 }

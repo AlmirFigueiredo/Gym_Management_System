@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.repositories.WorkoutPlanRepository;
+import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
 
 @Service
@@ -53,6 +54,22 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
         Optional<WorkoutPlan> workoutplan = workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
         if (workoutplan.isPresent()) {
             workoutPlanRepository.delete(workoutplan.get());
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
+    @Override
+    public WorkoutPlan updateWorkoutPlan(String id, WorkoutPlanRequest workoutPlanRequest) {
+        Optional<WorkoutPlan> optionalWorkoutPlan = workoutPlanRepository.findById(id);
+        if (optionalWorkoutPlan.isPresent()) {
+            WorkoutPlan workoutPlan = optionalWorkoutPlan.get();
+            workoutPlan.setMemberId(workoutPlanRequest.getMemberId());
+            workoutPlan.setTrainerId(workoutPlanRequest.getTrainerId());
+            workoutPlan.setStartDate(workoutPlanRequest.getStartDate());
+            workoutPlan.setEndDate(workoutPlanRequest.getEndDate());
+            workoutPlan.setDailyWorkouts(workoutPlanRequest.getDailyWorkouts());
+            return workoutPlanRepository.save(workoutPlan);
         } else {
             throw new NoSuchElementException();
         }
