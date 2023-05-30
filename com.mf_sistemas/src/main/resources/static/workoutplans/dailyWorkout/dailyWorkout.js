@@ -2,74 +2,79 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const day = urlParams.get('day');
     fetchDailyWorkout(day);
-
-    const modalBox = document.getElementById('modalBox');
-    const closeSpan = document.getElementsByClassName('close')[0];
-    const saveButton = document.getElementById('saveButton');
-
-    closeSpan.onclick = function () {
-        modalBox.style.display = 'none';
-    }
-    window.onclick = function (event) {
-        if (event.target == modalBox) {
-            modalBox.style.display = 'none';
-        }
-    }
-    saveButton.onclick = modifyExercise;
 });
 
 async function fetchDailyWorkout(day) {
-    const response = await fetch(`/WorkoutPlans?day=${day}`);
+    const response = await fetch(`/DailyWorkouts/${day}`);
+    if (!response.ok) {
+        console.error(`There was an error fetching the workout: ${response.status}`);
+        return;
+    }
     const dailyWorkout = await response.json();
-    displayDailyWorkout(dailyWorkout);
+    if (dailyWorkout && dailyWorkout.exercises) {
+        displayDailyWorkout(dailyWorkout);
+    } else {
+        console.log(`No workout found for day ${day}`);
+    }
 }
+
 
 function displayDailyWorkout(dailyWorkout) {
-    const tbody = document.getElementById('workoutTable').getElementsByTagName('tbody')[0];
-    dailyWorkout.exercises.forEach(exercise => {
-        let row = tbody.insertRow();
-        row.insertCell().innerHTML = exercise.name;
-        row.insertCell().innerHTML = exercise.quantitySets;
-        row.insertCell().innerHTML = exercise.quantityReps;
-        row.insertCell().innerHTML = exercise.resTimeSeconds;
-        let cell = row.insertCell();
-        let editButton = document.createElement('button');
-        editButton.innerText = 'Edit';
-        editButton.addEventListener('click', function () {
-            showEditModal(exercise.id);
+    const tableBody = document.getElementById('workoutTableBody');
+    tableBody.innerHTML = '';
+
+    dailyWorkout.exercises.forEach((exercise) => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td class="exercise" data-id="${exercise.id}">${exercise.name}</td>
+            <td>${exercise.quantitySets}</td>
+            <td>${exercise.quantityReps}</td>
+            <td>${exercise.resTimeSeconds}</td>
+        `;
+
+        row.querySelector('.exercise').addEventListener('click', function () {
+            openEditExerciseModal(exercise);
         });
-        cell.appendChild(editButton);
     });
 }
 
-function showEditModal(exerciseId) {
-    fetch(`/Exercises/${exerciseId}`)
-        .then(response => response.json())
-        .then(exercise => {
-            document.getElementById('name').value = exercise.name;
-            document.getElementById('quantitySets').value = exercise.quantitySets;
-            document.getElementById('quantityReps').value = exercise.quantityReps;
-            document.getElementById('resTimeSeconds').value = exercise.resTimeSeconds;
-            document.getElementById('modalBox').style.display = 'block';
+function openEditExerciseModal(exercise) {
+    const originalExercise = Object.assign({}, exercise);
+
+    const form = document.getElementById('editExerciseForm');
+    form.elements['name'].value = originalExercise.name;
+    form.elements['sets'].value = originalExercise.quantitySets;
+    form.elements['reps'].value = originalExercise.quantityReps;
+    form.elements['restTime'].value = originalExercise.resTimeSeconds;
+
+    const modal = document.getElementById('editExerciseModal');
+    modal.style.display = 'block';
+
+    form.onsubmit = function (e) {
+        e.preventDefault();
+
+        const updatedExercise = Object.assign({}, originalExercise, {
+            name: form.elements['name'].value,
+            quantitySets: parseInt(form.elements['sets'].value),
+            quantityReps: parseInt(form.elements['reps'].value),
+            resTimeSeconds: parseInt(form.elements['restTime'].value),
         });
+
+        fetch(`/Exercises/${updatedExercise.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedExercise),
+        });
+
+        modal.style.display = 'none';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const day = urlParams.get('day');
+        fetchDailyWorkout(day);
+    };
 }
 
-async function modifyExercise() {
-    const exerciseId = document.getElementById('exerciseId').value;
-    const response = await fetch(`/Exercises/${exerciseId}`);
-    const exercise = await response.json();
-    const newExercise = { ...exercise };
-    newExercise.name = document.getElementById('name').value;
-    newExercise.quantitySets = document.getElementById('quantitySets').value;
-    newExercise.quantityReps = document.getElementById('quantityReps').value;
-    newExercise.resTimeSeconds = document.getElementById('resTimeSeconds').value;
-    await fetch('/Exercises', {
-        method: 'POST',
-        body: JSON.stringify(newExercise),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    document.getElementById('modalBox').style.display = 'none';
-    fetchDailyWorkout(newExercise.day);
-}
+const addButton = document.getElementById('addExerciseButton');
+addButton.addEventListener('click', function () { });
