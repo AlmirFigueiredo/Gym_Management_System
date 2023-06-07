@@ -1,56 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Daily Workout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Workout</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dailyWorkout.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <header>
-                <h1>GYM</h1>
-            </header>
-            <nav>
-                <ul class="menu">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li class="menu-item">
-                        <a href="#">Members</a>
-                        <ul class="sub-menu">
-                            <li><a href="../../members/index.html">All Members</a></li>
-                            <li><a href="../../members/add_member/">Add New Member</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Trainers</a>
-                        <ul class="sub-menu">
-                            <li><a href="../../trainers/index.html">Trainers</a></li>
-                            <li><a href="../../trainers/add_trainer/add_trainer.html">Add New Trainer</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">WorkoutPlans</a>
-                        <ul class="sub-menu">
-                            <li><a href="../index.html">WorkoutPlans</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+    <header>
+        <h1>GYM</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li>
+                <a href="#">Members</a>
+                <ul>
+                    <li><a href="../../members/index.html">All Members</a></li>
+                    <li><a href="../../members/add_member/">Add New Member</a></li>
                 </ul>
-            </nav>
-        </div>
-    </div>
-    <div class="main">
-        <header>
-            <h1>Daily Workout Details</h1>
-        </header>
-    </div>
+            </li>
+            <li>
+                <a href="#">Trainers</a>
+                <ul>
+                    <li><a href="../../trainers/index.html">Trainers</a></li>
+                    <li><a href="../../trainers/add_trainer/add_trainer.html">Add New Trainer</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">WorkoutPlans</a>
+                <ul>
+                    <li><a href="../index.html">WorkoutPlans</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
     <main>
+        <h1>Daily Workout Details</h1>
         <table id="workoutTable">
             <thead>
                 <tr>
@@ -60,12 +50,9 @@
                     <th>Rest Time</th>
                 </tr>
             </thead>
-            <tbody id="workoutTableBody">
-
-            </tbody>
+            <tbody id="workoutTableBody"></tbody>
         </table>
         <button id="addExerciseButton">Add Exercise</button>
-
         <div id="modalBox" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -85,5 +72,4 @@
     </main>
     <script src="dailyWorkout.js"></script>
 </body>
-
 </html>

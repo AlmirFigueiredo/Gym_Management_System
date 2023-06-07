@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const currentDay = new Date().toLocaleString('en-us', { weekday: 'long' });
-    fetchDailyWorkout(currentDay);
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedDay = urlParams.get('day') || new Date().toLocaleString('en-us', { weekday: 'long' });
+    fetchDailyWorkout(selectedDay);
 });
 
 async function fetchDailyWorkout(day) {

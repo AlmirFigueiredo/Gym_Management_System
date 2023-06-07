@@ -116,7 +116,6 @@ function displayWorkoutPlanDetails(workoutPlan) {
         });
     });
 }
-
 function deleteWorkoutPlan(workoutPlanId) {
     const confirmation = confirm("Do you want to delete this Workout Plan?")
     if (confirmation) {
