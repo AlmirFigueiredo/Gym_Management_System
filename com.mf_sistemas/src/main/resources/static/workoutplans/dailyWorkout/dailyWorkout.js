@@ -40,13 +40,13 @@ function displayDailyWorkout(dailyWorkout) {
 function openEditExerciseModal(exercise) {
     const originalExercise = Object.assign({}, exercise);
 
-    const form = document.getElementById('editExerciseForm');
+    const form = document.getElementById('exerciseForm');
     form.elements['name'].value = originalExercise.name;
-    form.elements['sets'].value = originalExercise.quantitySets;
-    form.elements['reps'].value = originalExercise.quantityReps;
-    form.elements['restTime'].value = originalExercise.resTimeSeconds;
+    form.elements['quantitySets'].value = originalExercise.quantitySets;
+    form.elements['quantityReps'].value = originalExercise.quantityReps;
+    form.elements['resTimeSeconds'].value = originalExercise.resTimeSeconds;
 
-    const modal = document.getElementById('editExerciseModal');
+    const modal = document.getElementById('modalBox');
     modal.style.display = 'block';
 
     form.onsubmit = function (e) {
@@ -54,9 +54,9 @@ function openEditExerciseModal(exercise) {
 
         const updatedExercise = Object.assign({}, originalExercise, {
             name: form.elements['name'].value,
-            quantitySets: parseInt(form.elements['sets'].value),
-            quantityReps: parseInt(form.elements['reps'].value),
-            resTimeSeconds: parseInt(form.elements['restTime'].value),
+            quantitySets: parseInt(form.elements['quantitySets'].value),
+            quantityReps: parseInt(form.elements['quantityReps'].value),
+            resTimeSeconds: parseInt(form.elements['resTimeSeconds'].value),
         });
 
         fetch(`/Exercises/${updatedExercise.id}`, {
@@ -75,5 +75,21 @@ function openEditExerciseModal(exercise) {
     };
 }
 
+function openAddExerciseModal() {
+    const form = document.getElementById('exerciseForm');
+    form.elements['name'].value = '';
+    form.elements['quantitySets'].value = '';
+    form.elements['quantityReps'].value = '';
+    form.elements['resTimeSeconds'].value = '';
+
+    const modal = document.getElementById('modalBox');
+    modal.style.display = 'block';
+
+    const closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+}
+
 const addButton = document.getElementById('addExerciseButton');
-addButton.addEventListener('click', function () { });
+addButton.addEventListener('click', openAddExerciseModal);
