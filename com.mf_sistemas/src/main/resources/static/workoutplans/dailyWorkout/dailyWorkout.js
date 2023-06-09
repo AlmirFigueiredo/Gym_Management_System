@@ -86,10 +86,15 @@ function openAddExerciseModal() {
     modal.style.display = 'block';
 
     const closeButton = document.querySelector('.close');
-    closeButton.addEventListener('click', function() {
+    closeButton.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 }
+const closeButton = document.querySelector('.close');
+closeButton.addEventListener('click', function () {
+    const modal = document.getElementById('modalBox');
+    modal.style.display = 'none';
+});
 
 const addButton = document.getElementById('addExerciseButton');
 addButton.addEventListener('click', openAddExerciseModal);
