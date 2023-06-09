@@ -45,6 +45,17 @@ public class ExerciseServiceImpl implements ExerciseService {
         }
     }
     @Override
+    public Exercise cloneExercise(String id) {
+        Optional<Exercise> optionalExercise = exerciseRepository.findById(id);
+        if(optionalExercise.isPresent()) {
+            Exercise original = optionalExercise.get();
+            Exercise cloned = original.clone();
+            return exerciseRepository.save(cloned);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+    @Override
     public void deleteExerciseById(String id) {
         Optional<Exercise> exercise = exerciseRepository.findById(id);
         if(exercise.isPresent()) {

@@ -11,5 +11,6 @@ public interface ExerciseService {
     List<Exercise> allExercises();
     Optional<Exercise> exerciseById(String id);
     Exercise updateExercise(String id, ExerciseRequest exerciseRequest);
+    Exercise cloneExercise(String id);
     void deleteExerciseById(String id);
 }
