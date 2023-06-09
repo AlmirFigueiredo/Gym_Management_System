@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Exercise {
+public class Exercise implements Cloneable {
     @Id
     private String id;
     private String name;
@@ -24,5 +24,13 @@ public class Exercise {
         this.quantityReps = quantityReps;
         this.quantitySets = quantitySets;
         this.resTimeSeconds = resTimeSeconds;
+    }
+    @Override
+    public Exercise clone() {
+        try {
+            return (Exercise) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Modificacao falhou");
+        }
     }
 }
