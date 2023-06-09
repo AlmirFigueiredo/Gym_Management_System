@@ -48,7 +48,10 @@ public class ExerciseController {
     public Exercise updateExercise(@PathVariable String id, @RequestBody ExerciseRequest exerciseRequest) {
         return exerciseService.updateExercise(id, exerciseRequest);
     }
-
+    @PostMapping("/{id}/clone")
+    public Exercise cloneExercise(@PathVariable String id) {
+        return exerciseService.cloneExercise(id);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExercise(@PathVariable String id) {
         exerciseService.deleteExerciseById(id);
