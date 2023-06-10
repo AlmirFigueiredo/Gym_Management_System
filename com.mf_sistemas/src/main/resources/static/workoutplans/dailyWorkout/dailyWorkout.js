@@ -113,16 +113,28 @@ function openAddExerciseModal() {
             resTimeSeconds: parseInt(form.elements['resTimeSeconds'].value),
         };
 
-        await fetch('/Exercises', {
+        const response = await fetch(`/Exercises`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newExercise),
         });
 
-        modal.style.display = 'none';
+        if (response.ok) {
+            const createdExercise = await response.json();
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const day = urlParams.get('day');
-        fetchDailyWorkout(day);
+            const urlParams = new URLSearchParams(window.location.search);
+            const day = urlParams.get('day');
+
+            await fetch(`/DailyWorkouts/day/${day}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(createdExercise),
+            });
+
+            fetchDailyWorkout(day);
+            modal.style.display = 'none';
+        } else {
+            console.error('Failed to create exercise');
+        }
     };
 }
