@@ -25,11 +25,15 @@ public class WorkoutPlan {
     private String endDate;
     @DocumentReference
     private List<DailyWorkout> dailyWorkouts;
-
     private WorkoutStrategy workoutStrategy;
 
-    public void setWorkoutStrategy(WorkoutStrategy workoutStrategy) {
-        this.workoutStrategy = workoutStrategy;
+    public WorkoutPlan(String id, String memberId, String trainerId, String startDate, String endDate, List<DailyWorkout> dailyWorkouts) {
+        this.id = id;
+        this.memberId = memberId;
+        this.trainerId = trainerId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.dailyWorkouts = dailyWorkouts;
     }
 
     public void generateRoutine() {

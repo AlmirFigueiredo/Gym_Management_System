@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+import com.josealmir.gymmanagementsystem.model.workoutplan.strategies.WorkoutStrategy;
 import com.josealmir.gymmanagementsystem.repositories.WorkoutPlanRepository;
 import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
@@ -84,4 +85,13 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
             throw new NoSuchElementException();
         }
     }
+    @Override
+    public WorkoutPlan createWorkoutPlanWithStrategy(String memberId, String trainerId, String startDate, String endDate, WorkoutStrategy strategy) {
+        String id = memberId + trainerId;
+        List<DailyWorkout> dailyWorkouts = strategy.generateRoutine();
+        WorkoutPlan workoutPlan = workoutPlanRepository
+                .insert(new WorkoutPlan(id, memberId, trainerId, startDate, endDate, dailyWorkouts));
+        return workoutPlan;
+    }
+
 }
