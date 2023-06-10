@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.josealmir.gymmanagementsystem.model.workoutplan.DailyWorkout;
 import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
+import com.josealmir.gymmanagementsystem.model.workoutplan.strategies.CardioStrategy;
+import com.josealmir.gymmanagementsystem.model.workoutplan.strategies.StrengthTrainingStrategy;
+import com.josealmir.gymmanagementsystem.model.workoutplan.strategies.WorkoutStrategy;
 import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
 
@@ -28,12 +31,12 @@ public class WorkoutPlanController {
 
     @GetMapping
     public ResponseEntity<List<WorkoutPlan>> getAllWorkoutPlans() {
-        return new ResponseEntity<List<WorkoutPlan>>(workoutPlanService.allWorkoutPlans(), HttpStatus.OK);
+        return new ResponseEntity<>(workoutPlanService.allWorkoutPlans(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<WorkoutPlan>> getWorkoutByIds(@PathVariable String id) {
-        return new ResponseEntity<Optional<WorkoutPlan>>(workoutPlanService.findWorkoutPlanById(id), HttpStatus.OK);
+        return new ResponseEntity<>(workoutPlanService.findWorkoutPlanById(id), HttpStatus.OK);
     }
 
     @GetMapping("/member/{memberId}")
@@ -43,12 +46,13 @@ public class WorkoutPlanController {
 
     @PostMapping
     public WorkoutPlan createWorkoutPlan(@RequestBody WorkoutPlanRequest workoutPlanRequest) {
-        String memberId = workoutPlanRequest.getMemberId();
-        String trainerId = workoutPlanRequest.getTrainerId();
-        String startDate = workoutPlanRequest.getStartDate();
-        String endDate = workoutPlanRequest.getEndDate();
-        List<DailyWorkout> dailyWorkouts = workoutPlanRequest.getDailyWorkouts();
-        return workoutPlanService.createWorkoutPlan(memberId, trainerId, startDate, endDate, dailyWorkouts);
+        return workoutPlanService.createWorkoutPlan(
+            workoutPlanRequest.getMemberId(),
+            workoutPlanRequest.getTrainerId(),
+            workoutPlanRequest.getStartDate(),
+            workoutPlanRequest.getEndDate(),
+            workoutPlanRequest.getDailyWorkouts()
+        );
     }
 
     @PutMapping("/{id}")
@@ -60,5 +64,27 @@ public class WorkoutPlanController {
     public ResponseEntity<Void> deleteByIds(@PathVariable String id) {
         workoutPlanService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/withStrategy")
+    public WorkoutPlan createWorkoutPlanWithStrategy(@RequestBody WorkoutPlanRequest workoutPlanRequest, @RequestParam String strategyType) {
+        WorkoutStrategy strategy;
+        switch (strategyType.toLowerCase()) {
+            case "cardio":
+                strategy = new CardioStrategy();
+                break;
+            case "strength":
+                strategy = new StrengthTrainingStrategy();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid strategy type");
+        }
+        return workoutPlanService.createWorkoutPlanWithStrategy(
+            workoutPlanRequest.getMemberId(),
+            workoutPlanRequest.getTrainerId(),
+            workoutPlanRequest.getStartDate(),
+            workoutPlanRequest.getEndDate(),
+            strategy
+        );
     }
 }
