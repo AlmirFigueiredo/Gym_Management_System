@@ -60,7 +60,7 @@
             <button id="addExerciseButton">Add Exercise</button>
             <div id="modalBox" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span id="closeModal" class="close">&times;</span>
                     <form id="exerciseForm">
                         <label for="name">Name:</label><br>
                         <input type="text" id="name" name="name"><br>
@@ -70,7 +70,8 @@
                         <input type="number" id="quantityReps" name="quantityReps"><br>
                         <label for="resTimeSeconds">Rest Time:</label><br>
                         <input type="number" id="resTimeSeconds" name="resTimeSeconds"><br>
-                        <button type="submit" id="saveButton">Save</button> <!-- Tipo de botão mudado para submit -->
+                        <button type="submit" id="saveButton">Save</button>
+                        <button id="deleteButton" class="deleteButton">Delete</button>
                     </form>
                 </div>
             </div>
@@ -78,4 +79,5 @@
     </div>
     <script src="dailyWorkout.js"></script>
 </body>
+
 </html>

@@ -18,30 +18,20 @@ function displayDailyWorkout(dailyWorkout) {
 
     dailyWorkout.exercises.forEach((exercise) => {
         const row = tableBody.insertRow();
-        row.innerHTML = `
-            <td class="exercise" data-id="${exercise.id}">${exercise.name}</td>
-            <td>${exercise.quantitySets}</td>
-            <td>${exercise.quantityReps}</td>
-            <td>${exercise.resTimeSeconds}</td>
-            <td><button class="deleteButton" data-id="${exercise.id}">Delete</button></td>
-        `;
+        const nameCell = row.insertCell();
+        const setsCell = row.insertCell();
+        const repsCell = row.insertCell();
+        const restTimeCell = row.insertCell();
 
-        row.querySelector('.exercise').addEventListener('click', function () {
+        nameCell.innerText = exercise.name;
+        setsCell.innerText = exercise.quantitySets;
+        repsCell.innerText = exercise.quantityReps;
+        restTimeCell.innerText = exercise.resTimeSeconds;
+
+        row.addEventListener('click', function () {
             cloneAndEditExercise(exercise);
         });
-
-        row.querySelector('.deleteButton').addEventListener('click', function () {
-            deleteExercise(exercise.id);
-        });
     });
-}
-
-async function deleteExercise(id) {
-    await fetch(`/Exercises/${id}`, { method: 'DELETE' });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const day = urlParams.get('day');
-    fetchDailyWorkout(day);
 }
 
 async function cloneAndEditExercise(exercise) {
@@ -83,6 +73,27 @@ function openEditExerciseModal(exercise) {
         const day = urlParams.get('day');
         fetchDailyWorkout(day);
     };
+
+    const closeModalButton = document.getElementById('closeModal');
+    closeModalButton.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', function () {
+        deleteExercise(exercise.id);
+    });
+}
+
+async function deleteExercise(id) {
+    const confirmation = confirm('Are you sure you want to delete this exercise?');
+    if (confirmation) {
+        await fetch(`/Exercises/${id}`, { method: 'DELETE' });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const day = urlParams.get('day');
+        fetchDailyWorkout(day);
+    }
 }
 
 function openAddExerciseModal() {
