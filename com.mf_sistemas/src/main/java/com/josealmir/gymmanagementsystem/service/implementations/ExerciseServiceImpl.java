@@ -11,15 +11,19 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
 import com.josealmir.gymmanagementsystem.repositories.ExerciseRepository;
 import com.josealmir.gymmanagementsystem.requests.ExerciseRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.ExerciseService;
+import com.josealmir.gymmanagementsystem.utils.GymLogger;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
+    private GymLogger logger = GymLogger.getInstance();
+    
     @Autowired
     private ExerciseRepository exerciseRepository;
 
     @Override
     public Exercise createExercise(String name, Integer quantitySets, Integer quantityReps, Integer resTimeSeconds) {
         Exercise exercise = exerciseRepository.insert(new Exercise(name, quantitySets, quantityReps, resTimeSeconds));
+        logger.log("New Exercise created, Name: " + name);
         return exercise;
     }
     @Override
