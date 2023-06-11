@@ -13,9 +13,12 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.WorkoutPlan;
 import com.josealmir.gymmanagementsystem.repositories.MemberRepository;
 import com.josealmir.gymmanagementsystem.requests.MemberRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.MemberService;
+import com.josealmir.gymmanagementsystem.utils.GymLogger;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+    private GymLogger logger = GymLogger.getInstance();
+
     @Autowired
     private MemberRepository memberRepository;
     @Override
@@ -24,6 +27,7 @@ public class MemberServiceImpl implements MemberService {
         String memberId = generateNextMemberId();
         if(memberId != null) {
             Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
+            logger.log("New Member created, Member ID: " + memberId);
             return member;
         } else {
             throw new IllegalStateException("Member limit reached. Cannot create more members.");
