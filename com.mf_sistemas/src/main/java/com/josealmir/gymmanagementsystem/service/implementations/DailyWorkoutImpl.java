@@ -12,15 +12,18 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.Exercise;
 import com.josealmir.gymmanagementsystem.repositories.DailyWorkoutRepository;
 import com.josealmir.gymmanagementsystem.requests.DailyWorkoutRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.DailyWorkoutService;
+import com.josealmir.gymmanagementsystem.utils.GymLogger;
 
 @Service
 public class DailyWorkoutImpl implements DailyWorkoutService{
+    private GymLogger logger = GymLogger.getInstance();
     @Autowired
     private DailyWorkoutRepository dailyWorkoutRepository;
 
     @Override
     public DailyWorkout createDailyWorkout(String dayOfWeek, List<Exercise> exercises) {
         DailyWorkout dailyWorkout = dailyWorkoutRepository.insert(new DailyWorkout(dayOfWeek, exercises));
+        logger.log("New DailyWorkout created, Day of Week: " + dayOfWeek);
         return dailyWorkout;
     }
     @Override
