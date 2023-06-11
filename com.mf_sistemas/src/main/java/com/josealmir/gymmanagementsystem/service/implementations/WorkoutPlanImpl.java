@@ -13,9 +13,12 @@ import com.josealmir.gymmanagementsystem.model.workoutplan.strategies.WorkoutStr
 import com.josealmir.gymmanagementsystem.repositories.WorkoutPlanRepository;
 import com.josealmir.gymmanagementsystem.requests.WorkoutPlanRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.WorkoutPlanService;
+import com.josealmir.gymmanagementsystem.utils.GymLogger;
 
 @Service
 public class WorkoutPlanImpl implements WorkoutPlanService {
+    private GymLogger logger = GymLogger.getInstance();
+
     @Autowired
     private WorkoutPlanRepository workoutPlanRepository;
 
@@ -25,6 +28,7 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
         String id = memberId + trainerId;
         WorkoutPlan workoutPlan = workoutPlanRepository
                 .insert(new WorkoutPlan(id, memberId, trainerId, startDate, endDate, dailyWorkouts));
+        logger.log("New Workout Plan created, ID: " + id);
         return workoutPlan;
     }
 
