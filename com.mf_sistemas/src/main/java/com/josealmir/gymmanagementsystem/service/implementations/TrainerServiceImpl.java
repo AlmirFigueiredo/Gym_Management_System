@@ -13,9 +13,12 @@ import com.josealmir.gymmanagementsystem.model.person.Trainer;
 import com.josealmir.gymmanagementsystem.repositories.TrainerRepository;
 import com.josealmir.gymmanagementsystem.requests.TrainerRequest;
 import com.josealmir.gymmanagementsystem.service.interfaces.TrainerService;
+import com.josealmir.gymmanagementsystem.utils.GymLogger;
 
 @Service
 public class TrainerServiceImpl implements TrainerService {
+
+    private GymLogger logger = GymLogger.getInstance();
     @Autowired
     private TrainerRepository trainerRepository;
 
@@ -26,6 +29,7 @@ public class TrainerServiceImpl implements TrainerService {
         if (trainerId != null) {
             Trainer trainer = trainerRepository.insert(new Trainer(trainerId, speciality, salary, certificationNumber, fullName, 
             phoneNumber, address, email));
+            logger.log("New Trainer created, Trainer ID: " + trainerId);
             return trainer;
         } else {
             throw new IllegalStateException();

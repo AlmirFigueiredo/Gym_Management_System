@@ -18,7 +18,7 @@ import com.josealmir.gymmanagementsystem.utils.GymLogger;
 @Service
 public class WorkoutPlanImpl implements WorkoutPlanService {
     private GymLogger logger = GymLogger.getInstance();
-
+    
     @Autowired
     private WorkoutPlanRepository workoutPlanRepository;
 
@@ -89,8 +89,10 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
             throw new NoSuchElementException();
         }
     }
+
     @Override
-    public WorkoutPlan createWorkoutPlanWithStrategy(String memberId, String trainerId, String startDate, String endDate, WorkoutStrategy strategy) {
+    public WorkoutPlan createWorkoutPlanWithStrategy(String memberId, String trainerId, String startDate,
+            String endDate, WorkoutStrategy strategy) {
         String id = memberId + trainerId;
         List<DailyWorkout> dailyWorkouts = strategy.generateRoutine();
         WorkoutPlan workoutPlan = workoutPlanRepository
