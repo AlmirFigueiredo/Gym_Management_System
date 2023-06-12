@@ -58,6 +58,7 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     public void deleteByIds(String trainerId, String memberId) {
         Optional<WorkoutPlan> workoutplan = workoutPlanRepository.findByMemberIdAndTrainerId(memberId, trainerId);
         if (workoutplan.isPresent()) {
+            logger.log("WorkoutPlan deleted, ID: " + memberId + trainerId);
             workoutPlanRepository.delete(workoutplan.get());
         } else {
             throw new NoSuchElementException();
@@ -74,6 +75,7 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
             workoutPlan.setStartDate(workoutPlanRequest.getStartDate());
             workoutPlan.setEndDate(workoutPlanRequest.getEndDate());
             workoutPlan.setDailyWorkouts(workoutPlanRequest.getDailyWorkouts());
+            logger.log("Workout Plan updated, ID:" + id);
             return workoutPlanRepository.save(workoutPlan);
         } else {
             throw new NoSuchElementException();
@@ -84,6 +86,7 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
     public void deleteById(String id) {
         Optional<WorkoutPlan> workoutPlan = workoutPlanRepository.findById(id);
         if (workoutPlan.isPresent()) {
+            logger.log("Workout Plan removed, ID:" + id);
             workoutPlanRepository.delete(workoutPlan.get());
         } else {
             throw new NoSuchElementException();
@@ -97,6 +100,8 @@ public class WorkoutPlanImpl implements WorkoutPlanService {
         List<DailyWorkout> dailyWorkouts = strategy.generateRoutine();
         WorkoutPlan workoutPlan = workoutPlanRepository
                 .insert(new WorkoutPlan(id, memberId, trainerId, startDate, endDate, dailyWorkouts));
+        
+        logger.log("Workout Plan with strategy created, ID: " + id);
         return workoutPlan;
     }
 
