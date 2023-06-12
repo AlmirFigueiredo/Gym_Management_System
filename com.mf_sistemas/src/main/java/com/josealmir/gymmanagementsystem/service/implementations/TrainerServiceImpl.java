@@ -57,6 +57,7 @@ public class TrainerServiceImpl implements TrainerService {
             trainer.setPhoneNumber(trainerRequest.getPhoneNumber());
             trainer.setAddress(trainerRequest.getAddress());
             trainer.setEmail(trainerRequest.getEmail());
+            logger.log("Trainer updated, Trainer ID: " + trainerId);
             return trainerRepository.save(trainer);
         } else {
             throw new NoSuchElementException();
@@ -67,6 +68,7 @@ public class TrainerServiceImpl implements TrainerService {
     public void deleteByTrainerId(String trainerId) {
         Optional<Trainer> trainer = trainerRepository.findByTrainerId(trainerId);
         if (trainer.isPresent()) {
+            logger.log("Trainer deleted, ID: " + trainerId);
             trainerRepository.delete(trainer.get());
         } else {
             throw new NoSuchElementException();
