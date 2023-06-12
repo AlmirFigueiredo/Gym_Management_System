@@ -63,6 +63,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     public void deleteExerciseById(String id) {
         Optional<Exercise> exercise = exerciseRepository.findById(id);
         if(exercise.isPresent()) {
+            logger.log("Exercise deleted, ID: " + id);
             exerciseRepository.delete(exercise.get());
         } else {
             throw new NoSuchElementException();
