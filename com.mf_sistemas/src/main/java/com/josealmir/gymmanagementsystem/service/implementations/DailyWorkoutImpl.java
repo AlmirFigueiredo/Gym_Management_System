@@ -45,6 +45,7 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
             DailyWorkout dailyWorkout = optionalDailyWorkout.get();
             dailyWorkout.setDayOfWeek(dailyWorkoutRequest.getDayOfWeek());
             dailyWorkout.setExercises(dailyWorkoutRequest.getExercises());
+            logger.log("DailyWorkout updated, ID: " + id);
             return dailyWorkoutRepository.save(dailyWorkout);
         } else {
             throw new NoSuchElementException();
@@ -54,6 +55,7 @@ public class DailyWorkoutImpl implements DailyWorkoutService{
     public void deleteDailyWorkout(String id) {
         Optional<DailyWorkout> dailyWorkout = dailyWorkoutRepository.findDailyWorkoutById(id);
         if(dailyWorkout.isPresent()) {
+            logger.log("DailyWorkout deleted, ID: " +  id);
             dailyWorkoutRepository.delete(dailyWorkout.get());
         } else {
             throw new NoSuchElementException();
