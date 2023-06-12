@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
         String memberId = generateNextMemberId();
         if(memberId != null) {
             Member member = memberRepository.insert(new Member(fullName, email, address, phoneNumber, memberId, memberShipType, startDate, endDate, workoutPlan));
-            logger.log("New Member created, Member ID: " + memberId);
+            logger.log("New Member added, Member ID: " + memberId);
             return member;
         } else {
             throw new IllegalStateException("Member limit reached. Cannot create more members.");
@@ -53,6 +53,7 @@ public class MemberServiceImpl implements MemberService {
             member.setMemberShipType(memberRequest.getMemberShipType());
             member.setPhoneNumber(memberRequest.getPhoneNumber());
             member.setStartDate(memberRequest.getStartDate());
+            logger.log("Member updated, ID: " + memberId);
             return memberRepository.save(member);
         }else {
             throw new NoSuchElementException();
@@ -63,6 +64,7 @@ public class MemberServiceImpl implements MemberService {
     public void deleteByMemberId(String memberId) {
         Optional<Member> member = memberRepository.findByMemberId(memberId);
         if(member.isPresent()) {
+            logger.log("Member deleted, ID: " + memberId);
             memberRepository.delete(member.get());
         } else {
             throw new NoSuchElementException();
